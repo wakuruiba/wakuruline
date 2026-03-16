@@ -376,13 +376,17 @@
   }
   .hero__float-badge-icon {
     width: 28px; height: 28px;
-    background: var(--primary);
+    background: var(--primary-pale);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 14px;
+    padding: 6px;
+  }
+  .hero__float-badge-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
   @keyframes float {
     0%, 100% { transform: translateY(0); }
@@ -398,7 +402,16 @@
     box-shadow: 0 6px 24px rgba(0,180,138,.4);
     font-size: 12px;
     font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     animation: float 4s ease-in-out infinite reverse;
+  }
+  .icon-inline {
+    width: 16px;
+    height: 16px;
+    display: block;
+    flex: 0 0 16px;
   }
 
   /* ===== Logo Strip ===== */
@@ -467,7 +480,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    padding: 10px;
+  }
+  .about-card__icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
   .about-card__label { font-size: 12px; color: var(--text-light); }
   .about-card__val { font-size: 22px; font-weight: 900; color: var(--primary); font-family: var(--font-en); }
@@ -484,65 +502,455 @@
     width: 22px; height: 22px; min-width: 22px;
     background: var(--primary);
     border-radius: 50%;
-    color: white;
-    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
     margin-top: 2px;
+    font-size: 0;
+  }
+  .about__point-check::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: url('assets/icons/about-point-check.svg') center/contain no-repeat;
   }
 
-  /* ===== Features ===== */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 48px;
-  }
-  .feature-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 32px 28px;
-    box-shadow: var(--shadow-sm);
-    border: 1.5px solid var(--gray-border);
-    transition: all .3s;
+  /* ===== Case Studies ===== */
+  .case-studies {
+    --case-gap: 32px;
+    --case-card-width: min(800px, calc(100vw - 220px));
     position: relative;
+    width: min(1880px, calc(100vw - 48px));
+    margin: 48px calc(50% - 50vw + 24px) 0;
+    padding: 0;
+  }
+  .case-study-slider {
     overflow: hidden;
+    padding: 22px 0 18px;
   }
-  .feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    right: 0; height: 3px;
-    background: var(--primary);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .3s;
+  .case-study-track {
+    display: flex;
+    align-items: stretch;
+    gap: var(--case-gap);
+    padding: 0 max(24px, calc((100% - var(--case-card-width)) / 2));
+    transition: transform .72s cubic-bezier(.22, .61, .36, 1);
+    will-change: transform;
   }
-  .feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--primary);
+  .case-study-card {
+    flex: 0 0 var(--case-card-width);
+    width: var(--case-card-width);
+    padding: 28px;
+    box-sizing: border-box;
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(255,255,255,.85);
+    border-radius: 28px;
+    box-shadow: 0 18px 48px rgba(17,24,39,.08);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    overflow: hidden;
+    min-height: 620px;
+    transform: scale(.94);
+    opacity: .62;
+    filter: saturate(.85);
+    transition:
+      transform .72s cubic-bezier(.22, .61, .36, 1),
+      opacity .45s ease,
+      box-shadow .45s ease,
+      border-color .45s ease,
+      filter .45s ease;
   }
-  .feature-card:hover::before { transform: scaleX(1); }
-  .feature-card__icon {
-    width: 52px; height: 52px;
-    background: var(--primary-pale);
-    border-radius: 14px;
+  .case-study-card.is-active {
+    transform: scale(1);
+    opacity: 1;
+    filter: none;
+    box-shadow: 0 28px 64px rgba(0,180,138,.14);
+    border-color: rgba(0,180,138,.25);
+  }
+  .case-study-card__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .case-study-card__head {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 26px;
-    margin-bottom: 18px;
+    gap: 12px;
+    flex-wrap: wrap;
   }
-  .feature-card__title {
-    font-size: 16px;
+  .case-study-card__num {
+    font-family: var(--font-en);
+    font-size: 18px;
     font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 10px;
+    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
   }
-  .feature-card__desc { font-size: 13px; color: var(--text-light); line-height: 1.75; }
+  .case-study-card__num::after {
+    content: '';
+    width: 26px;
+    height: 1px;
+    background: rgba(0,180,138,.5);
+  }
+  .case-study-card__title {
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .case-study-card__desc {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.9;
+    max-width: 46ch;
+  }
+  .case-study-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  .case-study-tags span {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #F3F7F8;
+    color: var(--dark);
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .case-study-tags span::before {
+    content: '#';
+    color: var(--primary);
+    margin-right: 6px;
+  }
+  .case-study-scene {
+    position: relative;
+    flex: 1;
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(0,180,138,.12), transparent 30%),
+      linear-gradient(180deg, #FFFFFF 0%, #F7FAFC 100%);
+    border: 1px solid var(--gray-border);
+    padding: 26px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 16px;
+    min-height: 330px;
+    overflow: hidden;
+  }
+  .case-study-scene--compact {
+    min-height: 280px;
+    padding: 22px;
+  }
+  .case-study-phone {
+    width: 138px;
+    height: 278px;
+    background: #0F172A;
+    border-radius: 28px;
+    padding: 8px;
+    box-shadow: 0 18px 40px rgba(15,23,42,.18);
+    position: relative;
+    z-index: 2;
+  }
+  .case-study-phone::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 62px;
+    height: 16px;
+    border-radius: 0 0 12px 12px;
+    background: #020617;
+    transform: translateX(-50%);
+  }
+  .case-study-phone__screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #8EA0C7 0%, #DCE3F2 100%);
+    padding: 18px 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .case-study-phone__bubble,
+  .case-study-phone__card,
+  .case-study-phone__chips span {
+    background: rgba(255,255,255,.96);
+    border-radius: 12px;
+  }
+  .case-study-phone__bubble {
+    padding: 10px;
+    color: #61739A;
+    font-size: 10px;
+    line-height: 1.55;
+  }
+  .case-study-phone__bubble strong {
+    display: block;
+    color: var(--primary);
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .case-study-phone__card {
+    height: 86px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .case-study-line {
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(0,0,0,.12);
+  }
+  .case-study-line--green { background: rgba(0,180,138,.65); }
+  .case-study-line--short { width: 55%; }
+  .case-study-line--mid { width: 74%; }
+  .case-study-line--long { width: 92%; }
+  .case-study-phone__chips {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .case-study-phone__chips span {
+    height: 32px;
+    box-shadow: var(--shadow-sm);
+  }
+  .case-study-panel {
+    width: min(100%, 320px);
+    background: var(--white);
+    border: 1px solid var(--gray-border);
+    border-radius: 18px;
+    box-shadow: 0 18px 38px rgba(15,23,42,.10);
+    overflow: hidden;
+  }
+  .case-study-panel__label {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-bottom: 12px;
+    padding: 8px 14px;
+    background: #2F343B;
+    color: var(--white);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .case-study-panel__head {
+    height: 16px;
+    background: linear-gradient(90deg, #4D8E88, #69C8C1);
+  }
+  .case-study-panel__body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 228px;
+    background:
+      linear-gradient(180deg, rgba(0,180,138,.05), rgba(0,180,138,0));
+  }
+  .case-study-panel__toolbar {
+    display: flex;
+    gap: 8px;
+  }
+  .case-study-panel__toolbar span,
+  .case-study-panel__row span,
+  .case-study-panel__foot span {
+    display: block;
+    border-radius: 999px;
+    background: #E7EEF3;
+  }
+  .case-study-panel__toolbar span {
+    width: 18px;
+    height: 18px;
+  }
+  .case-study-panel__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .case-study-panel__row {
+    display: grid;
+    grid-template-columns: 1.5fr .8fr .6fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 12px;
+    background: #F8FBFD;
+    border: 1px solid #EDF3F6;
+  }
+  .case-study-panel__row span { height: 10px; }
+  .case-study-panel__row span:last-child {
+    height: 24px;
+    border-radius: 8px;
+    background: rgba(0,180,138,.18);
+  }
+  .case-study-panel__foot {
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+  }
+  .case-study-panel__foot span {
+    height: 36px;
+    flex: 1;
+  }
+  .case-study-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,180,138,.25);
+    position: relative;
+    flex: 0 0 44px;
+    align-self: center;
+  }
+  .case-study-arrow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    border-top: 4px solid rgba(0,180,138,.75);
+    border-right: 4px solid rgba(0,180,138,.75);
+    transform: translate(-60%, -50%) rotate(45deg);
+  }
+  .case-study-note {
+    position: absolute;
+    background: var(--white);
+    border: 2px solid rgba(45,58,78,.22);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--dark);
+    box-shadow: 0 12px 28px rgba(15,23,42,.08);
+    max-width: 180px;
+  }
+  .case-study-note::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: var(--white);
+    border-right: 2px solid rgba(45,58,78,.22);
+    border-bottom: 2px solid rgba(45,58,78,.22);
+    transform: rotate(45deg);
+  }
+  .case-study-note--left {
+    left: 18px;
+    bottom: 18px;
+  }
+  .case-study-note--left::after {
+    left: 18px;
+    bottom: -8px;
+  }
+  .case-study-note--right {
+    right: 18px;
+    top: 24px;
+  }
+  .case-study-note--right::after {
+    right: 18px;
+    bottom: -8px;
+  }
+  .case-study-note--bottom {
+    right: 22px;
+    bottom: 20px;
+  }
+  .case-study-note--bottom::after {
+    right: 26px;
+    bottom: -8px;
+  }
+  .case-study-card.is-active .case-study-phone {
+    width: 154px;
+    height: 308px;
+  }
+  .case-study-card.is-active .case-study-panel {
+    width: min(100%, 360px);
+  }
+  .case-study-card--side:not(.is-active) .case-study-panel {
+    width: min(100%, 280px);
+  }
+  .case-study-card--side:not(.is-active) .case-study-card__title {
+    font-size: 26px;
+  }
+  .case-study-card--side:not(.is-active) .case-study-scene {
+    min-height: 300px;
+  }
+  .case-study-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: #2F343B;
+    color: var(--white);
+    box-shadow: 0 18px 36px rgba(15,23,42,.18);
+    cursor: pointer;
+    z-index: 3;
+    transition: transform .2s, opacity .2s, background .2s;
+  }
+  .case-study-nav:hover {
+    transform: translateY(-50%) scale(1.04);
+  }
+  .case-study-nav:disabled {
+    cursor: default;
+    opacity: .35;
+    transform: translateY(-50%);
+  }
+  .case-study-nav::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border-top: 3px solid currentColor;
+    border-right: 3px solid currentColor;
+  }
+  .case-study-nav--prev {
+    left: max(12px, calc((100% - var(--case-card-width)) / 2 - 28px));
+  }
+  .case-study-nav--prev::before {
+    transform: translate(-35%, -50%) rotate(-135deg);
+  }
+  .case-study-nav--next {
+    right: max(12px, calc((100% - var(--case-card-width)) / 2 - 28px));
+  }
+  .case-study-nav--next::before {
+    transform: translate(-65%, -50%) rotate(45deg);
+  }
+  .case-study-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .case-study-pagination button {
+    width: 44px;
+    height: 8px;
+    border-radius: 999px;
+    background: #D3DADF;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+  .case-study-pagination button:hover {
+    transform: scaleX(1.05);
+  }
+  .case-study-pagination button.is-active {
+    background: #2B2B2B;
+  }
 
   /* ===== Reasons ===== */
   .reasons-grid {
@@ -658,11 +1066,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
-    font-weight: 700;
+    font-size: 0;
   }
   .plan-feature-list li .check--yes { background: var(--primary); color: white; }
   .plan-feature-list li .check--no { background: var(--gray-border); color: var(--text-light); }
+  .plan-feature-list li .check::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .plan-feature-list li .check--yes::before {
+    background-image: url('assets/icons/plan-yes.svg');
+  }
+  .plan-feature-list li .check--no::before {
+    background-image: url('assets/icons/plan-no.svg');
+  }
   .plan-card__cta { width: 100%; display: flex; justify-content: center; }
 
   /* ===== Comparison Table ===== */
@@ -694,8 +1115,19 @@
   .compare-table tr:nth-child(even) td:first-child { background: var(--gray-light); }
   .compare-table tr:nth-child(even) td { background: #FAFCFE; }
   .compare-table td.td--featured { background: rgba(0,180,138,.05); }
-  .check-icon { color: var(--primary); font-size: 16px; font-weight: 700; }
-  .dash-icon { color: var(--gray-border); }
+  .check-icon,
+  .dash-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    font-size: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+  }
+  .check-icon { background-image: url('assets/icons/compare-yes.svg'); }
+  .dash-icon { background-image: url('assets/icons/compare-no.svg'); }
   .compare-table tr:last-child td { border-bottom: none; }
 
   /* ===== Contact Form ===== */
@@ -846,15 +1278,45 @@
     .hero__inner,
     .about-grid { grid-template-columns: 1fr; }
     .hero__visual { display: none; }
-    .features-grid { grid-template-columns: 1fr 1fr; }
+    .case-studies {
+      --case-gap: 24px;
+      --case-card-width: min(800px, calc(100vw - 140px));
+      width: calc(100vw - 40px);
+      margin: 48px calc(50% - 50vw + 20px) 0;
+    }
+    .case-study-card { min-height: auto; }
+    .case-study-card__top { flex-direction: column; }
+    .case-study-tags { justify-content: flex-start; }
     .plans-grid { grid-template-columns: 1fr; }
     .plan-card--featured { transform: none; }
     .reasons-grid { grid-template-columns: 1fr; }
     .footer__top { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 600px) {
-    .features-grid { grid-template-columns: 1fr; }
     .header__nav, .header__cta { display: none; }
+    .case-studies {
+      --case-gap: 16px;
+      --case-card-width: calc(100vw - 56px);
+      width: calc(100vw - 32px);
+      margin: 48px calc(50% - 50vw + 16px) 0;
+    }
+    .case-study-nav {
+      display: none;
+    }
+    .case-study-track {
+      padding: 0 12px;
+    }
+    .case-study-card { padding: 22px; border-radius: 22px; }
+    .case-study-scene,
+    .case-study-card--side .case-study-scene { min-height: 260px; padding: 18px; }
+    .case-study-phone,
+    .case-study-card.is-active .case-study-phone { width: 118px; height: 238px; }
+    .case-study-panel,
+    .case-study-card.is-active .case-study-panel,
+    .case-study-card--side .case-study-panel { width: 100%; }
+    .case-study-arrow { display: none; }
+    .case-study-note { transform: scale(.92); transform-origin: right top; }
+    .case-study-pagination button { width: 28px; }
     .contact-form-wrap { padding: 28px 20px; }
     .compare-table { font-size: 12px; }
     .compare-table th, .compare-table td { padding: 10px 12px; }
@@ -881,7 +1343,7 @@
     <a href="#" class="header__logo">COMS<span>BI</span></a>
     <ul class="header__nav">
       <li><a href="#about">COMSBIとは？</a></li>
-      <li><a href="#features">機能一覧</a></li>
+      <li><a href="#features">活用事例</a></li>
       <li><a href="#reasons">選ばれる理由</a></li>
       <li><a href="#plans">プラン</a></li>
       <li><a href="#contact">お問い合わせ</a></li>
@@ -964,14 +1426,14 @@
           </div>
         </div>
         <div class="hero__float-badge">
-          <div class="hero__float-badge-icon">📊</div>
+          <div class="hero__float-badge-icon"><img src="assets/icons/hero-open-rate.svg" alt=""></div>
           <div>
             <div style="color:var(--primary)">+32%</div>
             <div style="font-weight:400;color:var(--text-light)">開封率UP</div>
           </div>
         </div>
         <div class="hero__float-badge2">
-          🔔 新規顧客 +128人 / 今月
+          <img src="assets/icons/hero-new-customers.svg" alt="" class="icon-inline"> 新規顧客 +128人 / 今月
         </div>
       </div>
     </div>
@@ -999,22 +1461,22 @@
     <div class="about-grid fade-in">
       <div class="about__img-area">
         <div class="about-card">
-          <div class="about-card__icon">👥</div>
+          <div class="about-card__icon"><img src="assets/icons/about-customers.svg" alt=""></div>
           <div class="about-card__label">登録顧客数</div>
           <div class="about-card__val">50K+</div>
         </div>
         <div class="about-card">
-          <div class="about-card__icon">📨</div>
+          <div class="about-card__icon"><img src="assets/icons/about-message-volume.svg" alt=""></div>
           <div class="about-card__label">月間配信数</div>
           <div class="about-card__val">2M+</div>
         </div>
         <div class="about-card">
-          <div class="about-card__icon">🏪</div>
+          <div class="about-card__icon"><img src="assets/icons/about-stores.svg" alt=""></div>
           <div class="about-card__label">導入店舗数</div>
           <div class="about-card__val">1,200+</div>
         </div>
         <div class="about-card">
-          <div class="about-card__icon">⭐</div>
+          <div class="about-card__icon"><img src="assets/icons/about-satisfaction.svg" alt=""></div>
           <div class="about-card__label">顧客満足度</div>
           <div class="about-card__val">98%</div>
         </div>
@@ -1048,41 +1510,302 @@
 <section class="section section--gray" id="features">
   <div class="container">
     <div class="text-center fade-in">
-      <div class="label-tag">COMSBI 機能一覧</div>
-      <h2 class="section-title">ビジネスを加速する<br>充実の機能ラインアップ</h2>
-      <p class="section-sub">すべての機能が、ひとつのプラットフォームに集約されています</p>
+      <div class="label-tag">CASE STUDY</div>
+      <h2 class="section-title">COMSBI活用事例</h2>
+      <p class="section-sub">業種ごとに異なるLINE活用を、現場オペレーションまで落とし込めます</p>
     </div>
-    <div class="features-grid">
-      <div class="feature-card fade-in">
-        <div class="feature-card__icon">💬</div>
-        <div class="feature-card__title">LINEメッセージ配信</div>
-        <p class="feature-card__desc">セグメント別・行動トリガー別に自動配信。高い開封率でプロモーションを最大化します。</p>
+    <div class="case-studies fade-in" data-case-slider>
+      <button class="case-study-nav case-study-nav--prev" type="button" data-case-prev aria-label="前の活用事例"></button>
+      <div class="case-study-slider">
+        <div class="case-study-track">
+      <article class="case-study-card case-study-card--side case-study-card--featured is-active" data-case-slide>
+        <div class="case-study-card__top">
+          <div class="case-study-card__head">
+            <span class="case-study-card__num">01</span>
+            <h3 class="case-study-card__title">美容サロン</h3>
+          </div>
+          <div class="case-study-tags">
+            <span>予約</span>
+            <span>来店後配信</span>
+          </div>
+        </div>
+        <p class="case-study-card__desc">友だち追加時にカウンセリングフォームを送信し、予約情報と来店履歴をひも付け。施術周期に合わせた再来店リマインドまで自動化できます。</p>
+        <div class="case-study-scene case-study-scene--compact">
+          <div class="case-study-phone">
+            <div class="case-study-phone__screen">
+              <div class="case-study-phone__bubble">
+                初回のご予約ありがとうございます
+                <strong>事前カウンセリングを回答</strong>
+              </div>
+              <div class="case-study-phone__card">
+                <div class="case-study-line case-study-line--green case-study-line--mid"></div>
+                <div class="case-study-line case-study-line--long"></div>
+                <div class="case-study-line case-study-line--short"></div>
+              </div>
+              <div class="case-study-phone__chips">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-panel">
+            <div class="case-study-panel__label">管理画面イメージ</div>
+            <div class="case-study-panel__head"></div>
+            <div class="case-study-panel__body">
+              <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
+              <div class="case-study-panel__list">
+                <div class="case-study-panel__row"><span></span><span></span><span></span></div>
+                <div class="case-study-panel__row"><span></span><span></span><span></span></div>
+                <div class="case-study-panel__row"><span></span><span></span><span></span></div>
+              </div>
+              <div class="case-study-panel__foot"><span></span><span></span></div>
+            </div>
+          </div>
+          <div class="case-study-note case-study-note--left">来店周期ごとに<br>自動配信シナリオを設定</div>
+        </div>
+      </article>
+      <article class="case-study-card case-study-card--side" data-case-slide>
+        <div class="case-study-card__top">
+          <div class="case-study-card__head">
+            <span class="case-study-card__num">02</span>
+            <h3 class="case-study-card__title">スーパー・ドラッグ</h3>
+          </div>
+          <div class="case-study-tags">
+            <span>フォーム</span>
+            <span>タグ</span>
+          </div>
+        </div>
+        <p class="case-study-card__desc">回答フォームで取得した情報を顧客属性に変換し、生活圏や購買傾向に合わせてセグメント配信。店舗横断で使える販促基盤をつくれます。</p>
+        <div class="case-study-scene">
+          <div class="case-study-phone">
+            <div class="case-study-phone__screen">
+              <div class="case-study-phone__bubble">
+                友だち追加ありがとうございます
+                <strong>アンケートに答える</strong>
+              </div>
+              <div class="case-study-phone__card">
+                <div class="case-study-line case-study-line--green case-study-line--mid"></div>
+                <div class="case-study-line case-study-line--long"></div>
+                <div class="case-study-line case-study-line--mid"></div>
+                <div class="case-study-line case-study-line--short"></div>
+              </div>
+              <div class="case-study-phone__chips">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-arrow"></div>
+          <div class="case-study-panel">
+            <div class="case-study-panel__label">管理画面イメージ</div>
+            <div class="case-study-panel__head"></div>
+            <div class="case-study-panel__body">
+              <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
+              <div class="case-study-panel__list">
+                <div class="case-study-panel__row"><span style="width:92%"></span><span style="width:75%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:85%"></span><span style="width:60%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:70%"></span><span style="width:50%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:88%"></span><span style="width:65%"></span><span></span></div>
+              </div>
+              <div class="case-study-panel__foot"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <div class="case-study-note case-study-note--right">タグも回答ごとに<br>自動付与できます</div>
+          <div class="case-study-note case-study-note--bottom">取得した属性情報で<br>配信セグメントを生成</div>
+        </div>
+      </article>
+      <article class="case-study-card case-study-card--side" data-case-slide>
+        <div class="case-study-card__top">
+          <div class="case-study-card__head">
+            <span class="case-study-card__num">03</span>
+            <h3 class="case-study-card__title">商業施設</h3>
+          </div>
+          <div class="case-study-tags">
+            <span>ポイント</span>
+            <span>クーポン</span>
+          </div>
+        </div>
+        <p class="case-study-card__desc">LINEアカウントをポイントカードやクーポン接点とつなぎ、フロア横断で回遊促進。購買行動と接客履歴を一元管理できます。</p>
+        <div class="case-study-scene case-study-scene--compact">
+          <div class="case-study-panel">
+            <div class="case-study-panel__label">店舗一覧イメージ</div>
+            <div class="case-study-panel__head"></div>
+            <div class="case-study-panel__body">
+              <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
+              <div class="case-study-panel__list">
+                <div class="case-study-panel__row"><span style="width:90%"></span><span style="width:65%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:76%"></span><span style="width:58%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:82%"></span><span style="width:68%"></span><span></span></div>
+              </div>
+              <div class="case-study-panel__foot"><span></span><span></span></div>
+            </div>
+          </div>
+          <div class="case-study-note case-study-note--right">マルチアカウントを<br>一元管理</div>
+          <div class="case-study-note case-study-note--left">ポイント接点から<br>顧客情報を統合</div>
+        </div>
+      </article>
+      <article class="case-study-card case-study-card--side" data-case-slide>
+        <div class="case-study-card__top">
+          <div class="case-study-card__head">
+            <span class="case-study-card__num">04</span>
+            <h3 class="case-study-card__title">複数店舗ペットサロン</h3>
+          </div>
+          <div class="case-study-tags">
+            <span>マルチアカウント</span>
+            <span>会員証</span>
+          </div>
+        </div>
+        <p class="case-study-card__desc">複数店舗のLINEアカウントを1つの顧客基盤で管理し、来店履歴や会員ランクを店舗横断で参照。再来店キャンペーンも一括で配信できます。</p>
+        <div class="case-study-scene case-study-scene--compact">
+          <div class="case-study-panel">
+            <div class="case-study-panel__label">店舗統合イメージ</div>
+            <div class="case-study-panel__head"></div>
+            <div class="case-study-panel__body">
+              <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
+              <div class="case-study-panel__list">
+                <div class="case-study-panel__row"><span style="width:93%"></span><span style="width:70%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:82%"></span><span style="width:55%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:88%"></span><span style="width:62%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:74%"></span><span style="width:48%"></span><span></span></div>
+              </div>
+              <div class="case-study-panel__foot"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <div class="case-study-phone">
+            <div class="case-study-phone__screen">
+              <div class="case-study-phone__bubble">
+                ご来店ありがとうございます
+                <strong>会員ランクが更新されました</strong>
+              </div>
+              <div class="case-study-phone__card">
+                <div class="case-study-line case-study-line--green case-study-line--long"></div>
+                <div class="case-study-line case-study-line--mid"></div>
+                <div class="case-study-line case-study-line--short"></div>
+              </div>
+              <div class="case-study-phone__chips">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-note case-study-note--right">会員情報を全店舗で<br>共通利用</div>
+        </div>
+      </article>
+      <article class="case-study-card case-study-card--side" data-case-slide>
+        <div class="case-study-card__top">
+          <div class="case-study-card__head">
+            <span class="case-study-card__num">05</span>
+            <h3 class="case-study-card__title">フィットネスジム</h3>
+          </div>
+          <div class="case-study-tags">
+            <span>休眠復活</span>
+            <span>スタンプ</span>
+          </div>
+        </div>
+        <p class="case-study-card__desc">来館頻度が落ちた会員を自動抽出し、パーソナルメニューや体験イベントを個別配信。チェックイン連動のスタンプ施策で継続率を高められます。</p>
+        <div class="case-study-scene">
+          <div class="case-study-phone">
+            <div class="case-study-phone__screen">
+              <div class="case-study-phone__bubble">
+                今週の来館がまだありません
+                <strong>限定プログラムを予約</strong>
+              </div>
+              <div class="case-study-phone__card">
+                <div class="case-study-line case-study-line--green case-study-line--mid"></div>
+                <div class="case-study-line case-study-line--long"></div>
+                <div class="case-study-line case-study-line--mid"></div>
+              </div>
+              <div class="case-study-phone__chips">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-arrow"></div>
+          <div class="case-study-panel">
+            <div class="case-study-panel__label">会員分析イメージ</div>
+            <div class="case-study-panel__head"></div>
+            <div class="case-study-panel__body">
+              <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
+              <div class="case-study-panel__list">
+                <div class="case-study-panel__row"><span style="width:86%"></span><span style="width:68%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:78%"></span><span style="width:58%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:90%"></span><span style="width:72%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:66%"></span><span style="width:45%"></span><span></span></div>
+              </div>
+              <div class="case-study-panel__foot"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <div class="case-study-note case-study-note--bottom">来館頻度の低下会員を<br>自動で抽出</div>
+        </div>
+      </article>
+      <article class="case-study-card case-study-card--side" data-case-slide>
+        <div class="case-study-card__top">
+          <div class="case-study-card__head">
+            <span class="case-study-card__num">06</span>
+            <h3 class="case-study-card__title">クリニック</h3>
+          </div>
+          <div class="case-study-tags">
+            <span>問診</span>
+            <span>リマインド</span>
+          </div>
+        </div>
+        <p class="case-study-card__desc">予約前の事前問診をLINEで回収し、来院前の注意事項や検査案内を自動送信。予約忘れ防止と受付業務の省力化を同時に実現できます。</p>
+        <div class="case-study-scene case-study-scene--compact">
+          <div class="case-study-phone">
+            <div class="case-study-phone__screen">
+              <div class="case-study-phone__bubble">
+                明日のご予約を確認しました
+                <strong>事前問診を入力する</strong>
+              </div>
+              <div class="case-study-phone__card">
+                <div class="case-study-line case-study-line--green case-study-line--mid"></div>
+                <div class="case-study-line case-study-line--long"></div>
+                <div class="case-study-line case-study-line--short"></div>
+              </div>
+              <div class="case-study-phone__chips">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-panel">
+            <div class="case-study-panel__label">問診管理イメージ</div>
+            <div class="case-study-panel__head"></div>
+            <div class="case-study-panel__body">
+              <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
+              <div class="case-study-panel__list">
+                <div class="case-study-panel__row"><span style="width:91%"></span><span style="width:72%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:76%"></span><span style="width:57%"></span><span></span></div>
+                <div class="case-study-panel__row"><span style="width:83%"></span><span style="width:63%"></span><span></span></div>
+              </div>
+              <div class="case-study-panel__foot"><span></span><span></span></div>
+            </div>
+          </div>
+          <div class="case-study-note case-study-note--left">来院前の確認事項を<br>自動で送信</div>
+        </div>
+      </article>
+        </div>
       </div>
-      <div class="feature-card fade-in">
-        <div class="feature-card__icon">🗂️</div>
-        <div class="feature-card__title">顧客管理（CRM）</div>
-        <p class="feature-card__desc">LINEフレンド情報と連動した顧客DB。来店・購買・メモを一括で管理できます。</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-card__icon">📅</div>
-        <div class="feature-card__title">予約・来店管理</div>
-        <p class="feature-card__desc">LINEから直接予約受付。スタッフへの通知・リマインド配信まで自動化します。</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-card__icon">🎫</div>
-        <div class="feature-card__title">デジタルクーポン・スタンプ</div>
-        <p class="feature-card__desc">LINE上でクーポン・スタンプカードを発行。リピーター獲得に直結する施策が可能です。</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-card__icon">📊</div>
-        <div class="feature-card__title">分析・レポート</div>
-        <p class="feature-card__desc">配信効果・顧客行動・売上データをダッシュボードで可視化。意思決定をデータで支援します。</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-card__icon">🔗</div>
-        <div class="feature-card__title">外部サービス連携</div>
-        <p class="feature-card__desc">POSレジ・ECカート・Google カレンダーなど主要サービスとAPI連携に対応しています。</p>
-      </div>
+      <button class="case-study-nav case-study-nav--next" type="button" data-case-next aria-label="次の活用事例"></button>
+    </div>
+    <div class="case-study-pagination fade-in" aria-label="活用事例スライダー">
+      <button type="button" aria-label="活用事例 1: 美容サロン" aria-current="true" class="is-active" data-case-dot></button>
+      <button type="button" aria-label="活用事例 2: スーパー・ドラッグ" aria-current="false" data-case-dot></button>
+      <button type="button" aria-label="活用事例 3: 商業施設" aria-current="false" data-case-dot></button>
+      <button type="button" aria-label="活用事例 4: 複数店舗ペットサロン" aria-current="false" data-case-dot></button>
+      <button type="button" aria-label="活用事例 5: フィットネスジム" aria-current="false" data-case-dot></button>
+      <button type="button" aria-label="活用事例 6: クリニック" aria-current="false" data-case-dot></button>
     </div>
   </div>
 </section>
@@ -1413,7 +2136,7 @@
         <div class="footer__col-title">サービス</div>
         <ul class="footer__links">
           <li><a href="#about">COMSBIとは？</a></li>
-          <li><a href="#features">機能一覧</a></li>
+          <li><a href="#features">活用事例</a></li>
           <li><a href="#plans">料金プラン</a></li>
           <li><a href="#">導入事例</a></li>
         </ul>
@@ -1466,6 +2189,162 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Case Study Slider
+  const caseSlider = document.querySelector('[data-case-slider]');
+  if (caseSlider) {
+    const track = caseSlider.querySelector('.case-study-track');
+    const originalSlides = Array.from(track.querySelectorAll('[data-case-slide]'));
+    const prevBtn = caseSlider.querySelector('[data-case-prev]');
+    const nextBtn = caseSlider.querySelector('[data-case-next]');
+    const dots = Array.from(document.querySelectorAll('[data-case-dot]'));
+    let currentIndex = Math.max(0, originalSlides.findIndex(slide => slide.classList.contains('case-study-card--featured')));
+    let visibleIndex = currentIndex + 1;
+    let autoplayId = null;
+
+    const firstClone = originalSlides[0]?.cloneNode(true);
+    const lastClone = originalSlides[originalSlides.length - 1]?.cloneNode(true);
+
+    if (firstClone && lastClone) {
+      firstClone.setAttribute('data-case-clone', 'first');
+      lastClone.setAttribute('data-case-clone', 'last');
+      track.append(firstClone);
+      track.prepend(lastClone);
+    }
+
+    const setTrackPosition = (animate = true) => {
+      const styles = getComputedStyle(track);
+      const gap = parseFloat(styles.gap || styles.columnGap || '0') || 0;
+      const slideWidth = originalSlides[0]?.offsetWidth || 0;
+
+      if (!animate) {
+        track.style.transition = 'none';
+      }
+
+      track.style.transform = `translateX(-${(slideWidth + gap) * visibleIndex}px)`;
+
+      if (!animate) {
+        track.getBoundingClientRect();
+        track.style.transition = '';
+      }
+    };
+
+    const syncCaseSlider = (animate = true) => {
+      const total = originalSlides.length;
+      setTrackPosition(animate);
+
+      originalSlides.forEach((slide, index) => {
+        const active = index === currentIndex;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+
+      if (firstClone) {
+        const active = currentIndex === 0 && visibleIndex === total + 1;
+        firstClone.classList.toggle('is-active', active);
+        firstClone.setAttribute('aria-hidden', active ? 'false' : 'true');
+      }
+
+      if (lastClone) {
+        const active = currentIndex === total - 1 && visibleIndex === 0;
+        lastClone.classList.toggle('is-active', active);
+        lastClone.setAttribute('aria-hidden', active ? 'false' : 'true');
+      }
+
+      dots.forEach((dot, index) => {
+        const active = index === currentIndex;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-current', active ? 'true' : 'false');
+      });
+    };
+
+    const moveToCase = (nextIndex) => {
+      const total = originalSlides.length;
+      const direction = nextIndex > currentIndex ? 1 : -1;
+
+      if (nextIndex === currentIndex) return;
+
+      if (currentIndex === total - 1 && nextIndex === 0) {
+        visibleIndex += 1;
+      } else if (currentIndex === 0 && nextIndex === total - 1) {
+        visibleIndex -= 1;
+      } else {
+        visibleIndex += direction;
+      }
+
+      currentIndex = nextIndex;
+      syncCaseSlider(true);
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayId) {
+        window.clearInterval(autoplayId);
+        autoplayId = null;
+      }
+    };
+
+    const startAutoplay = () => {
+      if (originalSlides.length < 2) return;
+      stopAutoplay();
+      autoplayId = window.setInterval(() => {
+        const total = originalSlides.length;
+        moveToCase((currentIndex + 1) % total);
+      }, 4800);
+    };
+
+    track.addEventListener('transitionend', () => {
+      const total = originalSlides.length;
+
+      if (visibleIndex === 0) {
+        visibleIndex = total;
+        setTrackPosition(false);
+      } else if (visibleIndex === total + 1) {
+        visibleIndex = 1;
+        setTrackPosition(false);
+      }
+    });
+
+    prevBtn?.addEventListener('click', () => {
+      const total = originalSlides.length;
+      moveToCase((currentIndex - 1 + total) % total);
+      startAutoplay();
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      const total = originalSlides.length;
+      moveToCase((currentIndex + 1) % total);
+      startAutoplay();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        visibleIndex = index + 1;
+        currentIndex = index;
+        syncCaseSlider(true);
+        startAutoplay();
+      });
+    });
+
+    caseSlider.addEventListener('mouseenter', stopAutoplay);
+    caseSlider.addEventListener('mouseleave', startAutoplay);
+    caseSlider.addEventListener('focusin', stopAutoplay);
+    caseSlider.addEventListener('focusout', (event) => {
+      if (!caseSlider.contains(event.relatedTarget)) {
+        startAutoplay();
+      }
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    window.addEventListener('resize', () => syncCaseSlider(false));
+    syncCaseSlider(false);
+    startAutoplay();
+  }
 
   // Smooth scroll for nav links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
