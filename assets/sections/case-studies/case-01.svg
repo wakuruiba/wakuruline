@@ -1,0 +1,12 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#E4EEE8"/>
+  <rect x="64" y="64" width="1272" height="772" rx="34" fill="white"/>
+  <path d="M140 640L394 432L676 634V756H140V640Z" fill="#D6E5E0"/>
+  <path d="M362 470L426 420L738 642L684 700L362 470Z" fill="#C7A182"/>
+  <rect x="840" y="174" width="416" height="520" rx="30" fill="#F0F5F4"/>
+  <rect x="876" y="216" width="160" height="18" rx="9" fill="#2B8C6B" fill-opacity="0.32"/>
+  <rect x="876" y="260" width="286" height="16" rx="8" fill="#CCD9D6"/>
+  <rect x="876" y="292" width="246" height="14" rx="7" fill="#D7E2DF"/>
+  <text x="118" y="164" fill="#22303A" font-family="Arial, sans-serif" font-size="52" font-weight="700">CASE 01</text>
+  <text x="118" y="228" fill="#2B8C6B" font-family="Arial, sans-serif" font-size="44" font-weight="700">Remodel follow-up scene</text>
+</svg>

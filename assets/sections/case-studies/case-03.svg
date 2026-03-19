@@ -1,0 +1,12 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#EEF0EA"/>
+  <rect x="64" y="64" width="1272" height="772" rx="34" fill="white"/>
+  <rect x="140" y="182" width="468" height="196" rx="28" fill="#E7DDD4"/>
+  <rect x="140" y="414" width="468" height="274" rx="28" fill="#F0F4F2"/>
+  <rect x="820" y="158" width="420" height="548" rx="30" fill="#EEF3F1"/>
+  <rect x="856" y="208" width="264" height="16" rx="8" fill="#2B8C6B" fill-opacity="0.28"/>
+  <rect x="856" y="244" width="308" height="14" rx="7" fill="#D1DDDA"/>
+  <rect x="856" y="276" width="244" height="14" rx="7" fill="#DBE5E2"/>
+  <text x="118" y="164" fill="#22303A" font-family="Arial, sans-serif" font-size="52" font-weight="700">CASE 03</text>
+  <text x="118" y="752" fill="#2B8C6B" font-family="Arial, sans-serif" font-size="44" font-weight="700">Exterior painting comparison scene</text>
+</svg>

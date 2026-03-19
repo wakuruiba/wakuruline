@@ -1,0 +1,13 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#E6ECEF"/>
+  <rect x="64" y="64" width="1272" height="772" rx="34" fill="white"/>
+  <rect x="122" y="174" width="504" height="538" rx="32" fill="#EFF4F6"/>
+  <rect x="156" y="220" width="208" height="16" rx="8" fill="#2B8C6B" fill-opacity="0.28"/>
+  <rect x="156" y="252" width="312" height="14" rx="7" fill="#D0DADF"/>
+  <rect x="156" y="282" width="244" height="14" rx="7" fill="#D9E2E6"/>
+  <rect x="764" y="198" width="452" height="484" rx="30" fill="#F3F6F8"/>
+  <rect x="804" y="248" width="180" height="16" rx="8" fill="#2B8C6B" fill-opacity="0.32"/>
+  <rect x="804" y="282" width="288" height="14" rx="7" fill="#D2DDE1"/>
+  <text x="118" y="776" fill="#22303A" font-family="Arial, sans-serif" font-size="52" font-weight="700">CASE 06</text>
+  <text x="118" y="840" fill="#2B8C6B" font-family="Arial, sans-serif" font-size="44" font-weight="700">Multi-office progress share scene</text>
+</svg>

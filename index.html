@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COMSBI - LINE顧客管理&集客クラウドサービス</title>
+<title>COMSBI - 住宅・リフォーム会社向けLINE追客・顧客管理ツール</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   /* ===== CSS Variables ===== */
   :root {
-    --primary: #00B48A;
-    --primary-light: #00CFA0;
-    --primary-dark: #009872;
-    --primary-pale: #E8FAF5;
-    --accent: #FF6B35;
-    --dark: #1A2332;
-    --dark-2: #2D3A4E;
-    --gray: #6B7A8D;
-    --gray-light: #F4F7FA;
-    --gray-border: #E0E8EF;
+    --primary: #2B8C6B;
+    --primary-light: #63B193;
+    --primary-dark: #1F6D54;
+    --primary-pale: #EEF4EF;
+    --accent: #D96C2D;
+    --dark: #1F2833;
+    --dark-2: #36404A;
+    --gray: #6E7A83;
+    --gray-light: #F6F3EC;
+    --gray-border: #D9D2C3;
     --white: #FFFFFF;
-    --text: #2D3A4E;
-    --text-light: #6B7A8D;
+    --text: #36404A;
+    --text-light: #6E7A83;
     --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
     --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
     --shadow-lg: 0 16px 48px rgba(0,0,0,0.14);
@@ -29,6 +29,14 @@
     --radius-sm: 10px;
     --font-ja: 'Noto Sans JP', sans-serif;
     --font-en: 'Poppins', sans-serif;
+    --hero-image: url('assets/sections/hero/test.png');
+    --about-image: url('assets/sections/about/about-main.svg');
+    --case-01-image: url('assets/sections/case-studies/case-01.svg');
+    --case-02-image: url('assets/sections/case-studies/case-02.svg');
+    --case-03-image: url('assets/sections/case-studies/case-03.svg');
+    --case-04-image: url('assets/sections/case-studies/case-04.svg');
+    --case-05-image: url('assets/sections/case-studies/case-05.svg');
+    --case-06-image: url('assets/sections/case-studies/case-06.svg');
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,16 +47,30 @@
     font-family: var(--font-ja);
     color: var(--text);
     line-height: 1.7;
-    background: var(--white);
+    background:
+      radial-gradient(circle at 12% 8%, rgba(43,140,107,.06), transparent 18%),
+      radial-gradient(circle at 88% 24%, rgba(217,108,45,.05), transparent 20%),
+      linear-gradient(rgba(54,64,74,.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(54,64,74,.018) 1px, transparent 1px),
+      #FCFAF6;
+    background-size: auto, auto, 120px 120px, 120px 120px, auto;
     overflow-x: hidden;
   }
 
   /* ===== Utility ===== */
   .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-  .section { padding: 80px 0; }
+  .section { padding: 80px 0; position: relative; overflow: hidden; isolation: isolate; }
   .section--gray { background: var(--gray-light); }
-  .section--dark { background: var(--dark); color: var(--white); }
+  .section--dark { background: var(--dark); color: var(--white); position: relative; overflow: hidden; isolation: isolate; }
   .section--green { background: var(--primary); color: var(--white); }
+  .section > .container,
+  .section--dark > .container,
+  .hero__inner,
+  .logos__inner,
+  .footer__inner {
+    position: relative;
+    z-index: 1;
+  }
 
   .label-tag {
     display: inline-block;
@@ -177,26 +199,32 @@
 
   /* ===== Hero ===== */
   .hero {
-    background: linear-gradient(135deg, #E8FAF5 0%, #F0FDF8 40%, #FFFFFF 100%);
-    padding: 72px 0 60px;
+    background:
+      linear-gradient(90deg, rgba(15,23,42,.82) 0%, rgba(15,23,42,.72) 42%, rgba(15,23,42,.52) 100%),
+      linear-gradient(135deg, rgba(43,140,107,.28), rgba(217,108,45,.08)),
+      var(--hero-image) center/cover no-repeat;
+    padding: 84px 0 72px;
     position: relative;
     overflow: hidden;
   }
   .hero::before {
     content: '';
     position: absolute;
-    top: -80px; right: -80px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(0,180,138,.12) 0%, transparent 70%);
-    border-radius: 50%;
+    inset: 0;
+    background:
+      linear-gradient(125deg, rgba(255,255,255,.08) 0 16%, transparent 16% 100%),
+      linear-gradient(305deg, transparent 0 86%, rgba(255,255,255,.05) 86% 100%);
+    pointer-events: none;
   }
   .hero::after {
     content: '';
     position: absolute;
-    bottom: -60px; left: -60px;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(0,180,138,.08) 0%, transparent 70%);
+    left: -120px;
+    bottom: -140px;
+    width: 360px;
+    height: 360px;
     border-radius: 50%;
+    background: radial-gradient(circle, rgba(43,140,107,.26) 0%, transparent 70%);
   }
   .hero__inner {
     max-width: 1100px;
@@ -206,14 +234,40 @@
     grid-template-columns: 1fr 1fr;
     gap: 48px;
     align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero__content {
+    position: relative;
+    padding: 34px;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.14);
+    background:
+      linear-gradient(180deg, rgba(15,23,42,.56) 0%, rgba(15,23,42,.38) 100%);
+    box-shadow: 0 24px 54px rgba(8,15,27,.24);
+    backdrop-filter: blur(10px);
+  }
+  .hero__content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(255,255,255,.12), transparent 22%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 12px, transparent 12px 28px);
+    pointer-events: none;
+  }
+  .hero__content > * {
+    position: relative;
+    z-index: 1;
   }
   .hero__badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--white);
-    border: 1.5px solid var(--primary);
-    color: var(--primary);
+    background: rgba(255,255,255,.1);
+    border: 1.5px solid rgba(255,255,255,.18);
+    color: rgba(255,255,255,.92);
     font-size: 12px;
     font-weight: 700;
     padding: 5px 14px;
@@ -235,11 +289,11 @@
     font-weight: 900;
     line-height: 1.25;
     margin-bottom: 20px;
-    color: var(--dark);
+    color: var(--white);
   }
   .hero__title em {
     font-style: normal;
-    color: var(--primary);
+    color: #B8F1DE;
     position: relative;
   }
   .hero__title em::after {
@@ -247,31 +301,287 @@
     position: absolute;
     bottom: 0; left: 0;
     width: 100%; height: 6px;
-    background: linear-gradient(90deg, var(--primary-light), transparent);
+    background: linear-gradient(90deg, rgba(184,241,222,.72), transparent);
     border-radius: 3px;
-    opacity: .4;
+    opacity: .55;
   }
   .hero__desc {
     font-size: 15px;
-    color: var(--text-light);
+    color: rgba(255,255,255,.82);
     line-height: 1.8;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
   }
-  .hero__desc strong { color: var(--primary); font-weight: 700; }
+  .hero__desc strong { color: #E8FFF6; font-weight: 700; }
+  .hero__topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .hero__topics span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.14);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 10px 20px rgba(8,15,27,.12);
+  }
+  .hero__topics span::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: 0 0 8px;
+  }
   .hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
   .hero__note {
     margin-top: 14px;
     font-size: 12px;
-    color: var(--text-light);
+    color: rgba(255,255,255,.7);
   }
 
-  /* Device Mockup */
+  /* Hero Visual */
   .hero__visual {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 18px;
+    align-items: end;
     position: relative;
+  }
+  .hero__visual::before {
+    content: '';
+    position: absolute;
+    inset: 22px 38px 20px 10px;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,.84), rgba(255,255,255,.34)),
+      linear-gradient(135deg, rgba(43,140,107,.24), rgba(217,108,45,.12));
+    border: 1px solid rgba(255,255,255,.72);
+    border-radius: 34px;
+    transform: rotate(-8deg);
+    box-shadow: 0 22px 58px rgba(31,40,51,.12);
+  }
+  .hero__visual::after {
+    content: 'PHOTO / SCREEN';
+    position: absolute;
+    left: 18px;
+    top: -8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(31,40,51,.86);
+    color: rgba(255,255,255,.92);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    box-shadow: var(--shadow-sm);
+  }
+  .hero__visual > div {
+    position: relative;
+    z-index: 1;
+  }
+  .hero__media-stack {
+    position: relative;
+    min-height: 420px;
+  }
+  .hero__photo-panel {
+    height: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255,255,255,.6);
+    background:
+      linear-gradient(135deg, rgba(31,40,51,.78), rgba(54,64,74,.58)),
+      linear-gradient(135deg, rgba(43,140,107,.32), rgba(217,108,45,.18));
+    box-shadow: 0 26px 60px rgba(31,40,51,.18);
+  }
+  .hero__photo-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 78% 26%, rgba(255,255,255,.16), transparent 24%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 12px, transparent 12px 28px);
+    opacity: .9;
+  }
+  .hero__photo-panel::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    bottom: -28px;
+    width: 150px;
+    height: 150px;
+    border-radius: 34px;
+    background: linear-gradient(135deg, rgba(43,140,107,.48), rgba(217,108,45,.22));
+    transform: rotate(28deg);
+  }
+  .hero__photo-copy {
+    position: absolute;
+    left: 26px;
+    top: 24px;
+    z-index: 1;
+    color: var(--white);
+    max-width: 68%;
+  }
+  .hero__photo-kicker {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.18);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    margin-bottom: 12px;
+  }
+  .hero__photo-title {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .hero__photo-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,.8);
+    line-height: 1.75;
+  }
+  .hero__thumb-row {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    z-index: 1;
+  }
+  .hero__thumb {
+    min-height: 98px;
+    background: rgba(255,255,255,.9);
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.7);
+    box-shadow: var(--shadow-sm);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero__thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(43,140,107,.12), rgba(217,108,45,.04));
+  }
+  .hero__thumb strong,
+  .hero__thumb span {
+    position: relative;
+    z-index: 1;
+  }
+  .hero__thumb strong {
+    font-size: 13px;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .hero__thumb span {
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+  .hero__consult-card {
+    background: rgba(255,255,255,.97);
+    border: 1px solid rgba(43,140,107,.14);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 18px 44px rgba(31,40,51,.14);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero__consult-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(43,140,107,.08), rgba(255,255,255,0) 36%),
+      repeating-linear-gradient(135deg, rgba(54,64,74,.02) 0 10px, transparent 10px 24px);
+    pointer-events: none;
+  }
+  .hero__consult-card > * {
+    position: relative;
+    z-index: 1;
+  }
+  .hero__consult-kicker {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(43,140,107,.12);
+    color: var(--primary-dark);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    margin-bottom: 12px;
+  }
+  .hero__consult-title {
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    color: var(--dark);
+  }
+  .hero__consult-desc {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .hero__consult-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .hero__consult-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .hero__consult-list li::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    margin-top: 1px;
+    border-radius: 50%;
+    background: rgba(43,140,107,.14);
+    box-shadow: inset 0 0 0 5px rgba(43,140,107,.34);
+  }
+  .hero__consult-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .hero__consult-tags span {
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: var(--gray-light);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .hero__consult-note {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 10px;
+    line-height: 1.7;
   }
   .mockup-device {
     background: var(--white);
@@ -395,7 +705,7 @@
   .hero__float-badge2 {
     position: absolute;
     bottom: 20px; left: -20px;
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: white;
     border-radius: 12px;
     padding: 10px 14px;
@@ -415,7 +725,24 @@
   }
 
   /* ===== Logo Strip ===== */
-  .logos { padding: 32px 0; border-top: 1px solid var(--gray-border); border-bottom: 1px solid var(--gray-border); }
+  .logos {
+    padding: 32px 0;
+    border-top: 1px solid var(--gray-border);
+    border-bottom: 1px solid var(--gray-border);
+    position: relative;
+    overflow: hidden;
+    background: rgba(255,255,255,.72);
+    backdrop-filter: blur(6px);
+  }
+  .logos::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(120deg, transparent 0 10%, rgba(217,108,45,.08) 10% 13%, transparent 13% 100%),
+      linear-gradient(300deg, transparent 0 84%, rgba(43,140,107,.09) 84% 88%, transparent 88% 100%);
+    pointer-events: none;
+  }
   .logos__inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
   .logos__label {
     text-align: center;
@@ -427,28 +754,86 @@
     margin-bottom: 24px;
   }
   .logos__row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
   }
   .logo-item {
-    background: var(--gray-light);
-    border-radius: 8px;
-    padding: 10px 20px;
+    background: rgba(255,255,255,.94);
+    border-radius: 22px;
+    padding: 22px 20px 20px;
+    min-height: 148px;
+    border: 1px solid rgba(43,140,107,.14);
+    box-shadow: 0 14px 34px rgba(31,40,51,.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .24s, box-shadow .24s, border-color .24s;
+  }
+  .logo-item::before {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    opacity: .75;
+  }
+  .logo-item__badge {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(43,140,107,.1);
+    color: var(--primary-dark);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+  }
+  .logo-item__title {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+  .logo-item__desc {
     font-size: 13px;
-    font-weight: 700;
-    color: var(--gray);
-    letter-spacing: .04em;
-    transition: all .2s;
+    line-height: 1.75;
+    color: var(--text-light);
   }
   .logo-item:hover {
-    background: var(--primary-pale);
-    color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(31,40,51,.12);
+    border-color: rgba(43,140,107,.28);
   }
 
   /* ===== About Section ===== */
+  #about {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.94) 0%, rgba(246,243,236,.76) 100%);
+  }
+  #about::before {
+    content: '';
+    position: absolute;
+    left: -68px;
+    top: 86px;
+    width: 240px;
+    height: 180px;
+    background: linear-gradient(135deg, rgba(217,108,45,.22), rgba(217,108,45,.05));
+    clip-path: polygon(0 0, 100% 0, 42% 100%, 0 100%);
+  }
+  #about::after {
+    content: '';
+    position: absolute;
+    right: -70px;
+    top: 76px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 22px solid rgba(43,140,107,.08);
+    box-shadow: inset 0 0 0 1px rgba(43,140,107,.04);
+  }
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -458,10 +843,85 @@
   .about__img-area {
     background: var(--primary-pale);
     border-radius: var(--radius);
-    padding: 40px;
+    padding: 26px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(43,140,107,.10);
+    box-shadow: 0 18px 44px rgba(31,40,51,.08);
+  }
+  .about__img-area::before {
+    content: '';
+    position: absolute;
+    inset: 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(43,140,107,.14);
+    pointer-events: none;
+  }
+  .about__photo-slot {
+    grid-column: 1 / -1;
+    min-height: 172px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background:
+      linear-gradient(135deg, rgba(31,40,51,.72), rgba(54,64,74,.48)),
+      linear-gradient(135deg, rgba(43,140,107,.14), rgba(217,108,45,.16)),
+      var(--about-image) center/cover no-repeat;
+    box-shadow: 0 18px 38px rgba(31,40,51,.16);
+    padding: 24px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .about__photo-slot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 80% 24%, rgba(255,255,255,.16), transparent 24%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 10px, transparent 10px 26px);
+    opacity: .9;
+  }
+  .about__photo-slot::after {
+    content: '';
+    position: absolute;
+    right: -26px;
+    bottom: -26px;
+    width: 140px;
+    height: 140px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, rgba(43,140,107,.44), rgba(217,108,45,.22));
+    transform: rotate(28deg);
+  }
+  .about__photo-slot-content {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
+    max-width: 72%;
+  }
+  .about__photo-slot-label {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.18);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    margin-bottom: 10px;
+  }
+  .about__photo-slot-title {
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+  .about__photo-slot-note {
+    font-size: 12px;
+    color: rgba(255,255,255,.78);
+    line-height: 1.75;
   }
   .about-card {
     background: var(--white);
@@ -516,6 +976,34 @@
   }
 
   /* ===== Case Studies ===== */
+  #features {
+    background:
+      linear-gradient(180deg, #F7F4EE 0%, #F2F6F2 100%);
+  }
+  #features::before {
+    content: '';
+    position: absolute;
+    left: -74px;
+    bottom: 52px;
+    width: 220px;
+    height: 220px;
+    border: 24px solid rgba(217,108,45,.08);
+    border-radius: 46px;
+    transform: rotate(35deg);
+  }
+  #features::after {
+    content: '';
+    position: absolute;
+    right: -46px;
+    top: 96px;
+    width: 220px;
+    height: 220px;
+    background:
+      linear-gradient(135deg, rgba(43,140,107,.16), rgba(255,255,255,0)),
+      repeating-linear-gradient(135deg, rgba(255,255,255,.24) 0 12px, transparent 12px 28px);
+    clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+    opacity: .7;
+  }
   .case-studies {
     --case-gap: 32px;
     --case-card-width: min(800px, calc(100vw - 220px));
@@ -548,7 +1036,7 @@
     backdrop-filter: blur(8px);
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 18px;
     overflow: hidden;
     min-height: 620px;
     transform: scale(.94);
@@ -571,8 +1059,10 @@
   .case-study-card__top {
     display: flex;
     justify-content: space-between;
-    gap: 16px;
+    gap: 14px;
     align-items: flex-start;
+    flex-direction: column;
+    order: 2;
   }
   .case-study-card__head {
     display: flex;
@@ -603,15 +1093,16 @@
   }
   .case-study-card__desc {
     font-size: 14px;
-    color: var(--text);
+    color: var(--text-light);
     line-height: 1.9;
-    max-width: 46ch;
+    max-width: none;
+    order: 3;
   }
   .case-study-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
   .case-study-tags span {
     display: inline-flex;
@@ -631,23 +1122,57 @@
   }
   .case-study-scene {
     position: relative;
+    order: 1;
     flex: 1;
     border-radius: 24px;
-    background:
-      radial-gradient(circle at 18% 18%, rgba(0,180,138,.12), transparent 30%),
-      linear-gradient(180deg, #FFFFFF 0%, #F7FAFC 100%);
-    border: 1px solid var(--gray-border);
-    padding: 26px;
+    background-image:
+      radial-gradient(circle at 18% 18%, rgba(43,140,107,.18), transparent 28%),
+      linear-gradient(160deg, rgba(255,255,255,.84) 0%, rgba(237,245,242,.90) 100%),
+      var(--case-photo);
+    background-position: center, center, center;
+    background-size: auto, auto, cover;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(43,140,107,.12);
+    padding: 72px 26px 26px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     gap: 16px;
-    min-height: 330px;
+    min-height: 360px;
     overflow: hidden;
   }
+  .case-study-scene::before {
+    content: 'PHOTO / LINE / 管理画面';
+    position: absolute;
+    left: 22px;
+    top: 20px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(31,40,51,.9);
+    color: rgba(255,255,255,.92);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    box-shadow: var(--shadow-sm);
+  }
+  .case-study-scene::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -26px;
+    width: 170px;
+    height: 170px;
+    border-radius: 34px;
+    background: linear-gradient(135deg, rgba(43,140,107,.18), rgba(217,108,45,.08));
+    transform: rotate(26deg);
+  }
+  .case-study-scene > * {
+    position: relative;
+    z-index: 1;
+  }
   .case-study-scene--compact {
-    min-height: 280px;
-    padding: 22px;
+    min-height: 320px;
+    padding: 68px 22px 22px;
   }
   .case-study-phone {
     width: 138px;
@@ -882,7 +1407,7 @@
     font-size: 26px;
   }
   .case-study-card--side:not(.is-active) .case-study-scene {
-    min-height: 300px;
+    min-height: 332px;
   }
   .case-study-nav {
     position: absolute;
@@ -953,6 +1478,33 @@
   }
 
   /* ===== Reasons ===== */
+  #reasons {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.98) 0%, rgba(250,247,241,.92) 100%);
+  }
+  #reasons::before {
+    content: '';
+    position: absolute;
+    right: 40px;
+    top: 30px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 18px solid rgba(43,140,107,.07);
+  }
+  #reasons::after {
+    content: '';
+    position: absolute;
+    left: -24px;
+    bottom: 48px;
+    width: 180px;
+    height: 180px;
+    background:
+      linear-gradient(135deg, rgba(217,108,45,.12), rgba(255,255,255,0)),
+      linear-gradient(45deg, transparent 0 54%, rgba(43,140,107,.14) 54% 60%, transparent 60% 100%);
+    border-radius: 28px;
+    transform: rotate(18deg);
+  }
   .reasons-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -968,6 +1520,17 @@
     box-shadow: var(--shadow-sm);
     border: 1.5px solid var(--gray-border);
     transition: all .25s;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(6px);
+  }
+  .reason-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    opacity: .75;
   }
   .reason-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
   .reason-num {
@@ -983,7 +1546,34 @@
   .reason-body p { font-size: 13px; color: var(--text-light); line-height: 1.75; }
 
   /* ===== CTA Banner ===== */
-  .cta-banner { padding: 64px 0; text-align: center; }
+  .cta-banner {
+    padding: 64px 0;
+    text-align: center;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(255,255,255,.05), transparent 18%),
+      linear-gradient(135deg, #252B31 0%, #1F2833 100%);
+  }
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(45deg, rgba(255,255,255,.04) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.04) 50%, rgba(255,255,255,.04) 75%, transparent 75%, transparent);
+    background-size: 22px 22px;
+    opacity: .28;
+    pointer-events: none;
+  }
+  .cta-banner::after {
+    content: '';
+    position: absolute;
+    right: -72px;
+    bottom: -92px;
+    width: 240px;
+    height: 240px;
+    border-radius: 42px;
+    background: linear-gradient(135deg, rgba(217,108,45,.24), rgba(43,140,107,.10));
+    transform: rotate(32deg);
+  }
   .cta-banner h2 {
     font-size: clamp(22px, 3vw, 34px);
     font-weight: 900;
@@ -994,6 +1584,31 @@
   .cta-banner__actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
   /* ===== Plans ===== */
+  #plans {
+    background:
+      linear-gradient(180deg, #F8F5EE 0%, #FFFFFF 100%);
+  }
+  #plans::before {
+    content: '';
+    position: absolute;
+    left: -72px;
+    top: 86px;
+    width: 200px;
+    height: 200px;
+    border-radius: 34px;
+    background: linear-gradient(135deg, rgba(43,140,107,.10), rgba(255,255,255,0));
+    transform: rotate(20deg);
+  }
+  #plans::after {
+    content: '';
+    position: absolute;
+    right: 38px;
+    top: 44px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 16px solid rgba(217,108,45,.07);
+  }
   .plans-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1040,16 +1655,17 @@
   }
   .plan-card--featured .plan-card__name { color: rgba(255,255,255,.8); }
   .plan-card__price {
-    font-family: var(--font-en);
-    font-size: 40px;
-    font-weight: 800;
+    font-family: var(--font-ja);
+    font-size: 30px;
+    font-weight: 900;
     color: var(--dark);
-    line-height: 1;
+    line-height: 1.25;
+    letter-spacing: .04em;
   }
   .plan-card--featured .plan-card__price { color: var(--white); }
   .plan-card__price sup { font-size: 20px; }
   .plan-card__price sub { font-size: 14px; font-weight: 400; }
-  .plan-card__period { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+  .plan-card__period { font-size: 12px; color: var(--text-light); margin-top: 8px; line-height: 1.7; }
   .plan-card--featured .plan-card__period { color: rgba(255,255,255,.7); }
   .plan-card__body { padding: 24px; }
   .plan-feature-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
@@ -1131,6 +1747,63 @@
   .compare-table tr:last-child td { border-bottom: none; }
 
   /* ===== Contact Form ===== */
+  #contact {
+    background:
+      radial-gradient(circle at 18% 22%, rgba(255,255,255,.06), transparent 18%),
+      linear-gradient(135deg, #262B31 0%, #1E242A 100%);
+  }
+  #contact::before {
+    content: '';
+    position: absolute;
+    right: -38px;
+    bottom: -48px;
+    width: 220px;
+    height: 220px;
+    border-radius: 44px;
+    background:
+      linear-gradient(135deg, rgba(217,108,45,.18), rgba(43,140,107,.12)),
+      repeating-linear-gradient(135deg, rgba(255,255,255,.08) 0 10px, transparent 10px 26px);
+    transform: rotate(28deg);
+  }
+  #contact::after {
+    content: '';
+    position: absolute;
+    left: -44px;
+    top: 62px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 18px solid rgba(255,255,255,.08);
+  }
+  #contact .label-tag {
+    background: rgba(255,255,255,.12);
+    color: #CFF3E7;
+    border-color: rgba(255,255,255,.12);
+  }
+  #contact .section-title {
+    color: var(--white);
+  }
+  #contact .section-sub {
+    color: rgba(255,255,255,.74);
+  }
+  .contact-points {
+    max-width: 920px;
+    margin: 0 auto 28px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .contact-points span {
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    color: rgba(255,255,255,.88);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
   .contact-form-wrap {
     max-width: 680px;
     margin: 0 auto;
@@ -1138,6 +1811,28 @@
     border-radius: var(--radius);
     padding: 48px;
     box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(43,140,107,.10);
+  }
+  .contact-form-wrap::before {
+    content: 'CONSULTING FORM';
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .16em;
+    color: rgba(43,140,107,.28);
+  }
+  .contact-form-lead {
+    margin-bottom: 24px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: rgba(43,140,107,.06);
+    color: var(--text-light);
+    font-size: 13px;
+    line-height: 1.8;
   }
   .form-group { margin-bottom: 20px; }
   .form-label {
@@ -1177,6 +1872,20 @@
   .form-submit { width: 100%; margin-top: 24px; }
 
   /* ===== FAQ ===== */
+  #faq {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.96) 0%, rgba(249,247,241,.92) 100%);
+  }
+  #faq::before {
+    content: '';
+    position: absolute;
+    right: -50px;
+    top: 44px;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    border: 18px solid rgba(43,140,107,.06);
+  }
   .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
   .faq-item {
     background: var(--white);
@@ -1275,9 +1984,13 @@
 
   /* ===== Responsive ===== */
   @media (max-width: 900px) {
+    .hero { padding: 72px 0 56px; }
     .hero__inner,
     .about-grid { grid-template-columns: 1fr; }
     .hero__visual { display: none; }
+    .hero__content { padding: 30px; }
+    .logos__row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .about__photo-slot-content { max-width: 100%; }
     .case-studies {
       --case-gap: 24px;
       --case-card-width: min(800px, calc(100vw - 140px));
@@ -1294,6 +2007,25 @@
   }
   @media (max-width: 600px) {
     .header__nav, .header__cta { display: none; }
+    .hero { padding: 64px 0 48px; }
+    .hero__content { padding: 24px 20px; border-radius: 24px; }
+    .logos__row { grid-template-columns: 1fr; }
+    .logo-item { min-height: auto; }
+    .contact-points { justify-content: flex-start; }
+    body {
+      background-size: auto, auto, 80px 80px, 80px 80px, auto;
+    }
+    .about__img-area {
+      grid-template-columns: 1fr;
+      padding: 18px;
+    }
+    .about__photo-slot {
+      min-height: 148px;
+      padding: 18px;
+    }
+    .about__photo-slot-title {
+      font-size: 19px;
+    }
     .case-studies {
       --case-gap: 16px;
       --case-card-width: calc(100vw - 56px);
@@ -1308,7 +2040,7 @@
     }
     .case-study-card { padding: 22px; border-radius: 22px; }
     .case-study-scene,
-    .case-study-card--side .case-study-scene { min-height: 260px; padding: 18px; }
+    .case-study-card--side .case-study-scene { min-height: 260px; padding: 60px 18px 18px; }
     .case-study-phone,
     .case-study-card.is-active .case-study-phone { width: 118px; height: 238px; }
     .case-study-panel,
@@ -1342,16 +2074,16 @@
   <div class="header__inner">
     <a href="#" class="header__logo">COMS<span>BI</span></a>
     <ul class="header__nav">
-      <li><a href="#about">COMSBIとは？</a></li>
+      <li><a href="#about">サービス概要</a></li>
       <li><a href="#features">活用事例</a></li>
       <li><a href="#reasons">選ばれる理由</a></li>
-      <li><a href="#plans">プラン</a></li>
+      <li><a href="#plans">運用メニュー</a></li>
       <li><a href="#contact">お問い合わせ</a></li>
       <li><a href="#faq">よくある質問</a></li>
     </ul>
     <div class="header__cta">
-      <a href="#contact" class="btn btn--outline" style="color:var(--primary);border-color:var(--primary)">ログイン</a>
-      <a href="#contact" class="btn btn--primary">無料で始める</a>
+      <a href="#features" class="btn btn--outline" style="color:var(--primary);border-color:var(--primary)">活用事例を見る</a>
+      <a href="#contact" class="btn btn--primary">追客設計を相談する</a>
     </div>
   </div>
 </header>
@@ -1362,79 +2094,66 @@
     <div class="hero__content">
       <div class="hero__badge">
         <span class="hero__badge-dot"></span>
-        LINE公式アカウント対応
+        住宅・リフォーム業向け LINE運用設計
       </div>
       <h1 class="hero__title">
-        LINE<em>顧客管理</em>&amp;集客、<br>
-        これひとつで<br>
-        まるっと解決！
+        <em>見積後の追客</em>と<br>
+        <em>OB顧客の掘り起こし</em>を、<br>
+        LINEで仕組み化
       </h1>
       <p class="hero__desc">
-        COMSBIは<strong>LINEビジネス向けクラウドサービス</strong>。<br>
-        顧客データの一元管理から自動メッセージ配信、<br>
-        予約・来店管理まで、すべてをスマートに。
+        COMSBIは<strong>住宅会社・リフォーム会社・外壁塗装会社・屋根工事会社向け</strong>の<br>
+        LINE追客・顧客管理ツールです。見積提出後のフォロー、OB顧客への再接点、<br>
+        営業ごとの対応状況の見える化まで、現場で回る運用に落とし込みます。
       </p>
-      <div class="hero__actions">
-        <a href="#contact" class="btn btn--primary">▶ 無料トライアル開始</a>
-        <a href="#features" class="btn btn--white">機能を見る</a>
+      <div class="hero__topics">
+        <span>見積後フォローを自動化</span>
+        <span>OB顧客を再掘り起こし</span>
+        <span>営業管理の属人化を解消</span>
       </div>
-      <p class="hero__note">※ クレジットカード不要 ・ 30日間無料</p>
+      <div class="hero__actions">
+        <a href="#contact" class="btn btn--primary">▶ LINE追客を相談する</a>
+        <a href="#features" class="btn btn--white">業種別の使い方を見る</a>
+      </div>
+      <p class="hero__note">※ LINE公式アカウント運用資格をもとに、業種ごとの導線設計をご相談いただけます</p>
     </div>
     <div class="hero__visual">
-      <div style="position:relative;">
-        <div class="mockup-device mockup-device--tablet">
-          <div class="mockup-screen">
-            <div class="mockup-bar mockup-bar--medium"></div>
-            <div class="mockup-stat-row">
-              <div class="mockup-stat"><div class="mockup-stat-num"></div><div class="mockup-stat-label"></div></div>
-              <div class="mockup-stat"><div class="mockup-stat-num"></div><div class="mockup-stat-label"></div></div>
+      <div class="hero__media-stack">
+        <div class="hero__photo-panel">
+          <div class="hero__photo-copy">
+            <div class="hero__photo-kicker">FIELD PHOTO PLACEHOLDER</div>
+            <div class="hero__photo-title">現場感のある写真と<br>実際のLINE画面で、<br>業界特化の印象をつくる</div>
+            <p class="hero__photo-desc">施工現場、営業接客、LINE対応中のスマホ画面を入れると、住宅・リフォーム業向けの実在感が一気に強くなります。</p>
+          </div>
+          <div class="hero__thumb-row">
+            <div class="hero__thumb">
+              <strong>必要な写真 01</strong>
+              <span>営業担当がスマホでLINE対応している場面</span>
             </div>
-            <div class="mockup-card">
-              <div class="mockup-card-title"></div>
-              <div class="mockup-card-lines">
-                <div class="mockup-card-line" style="width:90%"></div>
-                <div class="mockup-card-line" style="width:70%"></div>
-                <div class="mockup-card-line" style="width:80%"></div>
-              </div>
-            </div>
-            <div class="mockup-stat-row">
-              <div class="mockup-stat" style="grid-column:1/-1; flex-direction:row; align-items:center;">
-                <div class="mockup-stat-num" style="width:80px;height:8px;"></div>
-                <div style="margin-left:auto;width:30px;height:14px;background:var(--primary);border-radius:4px;opacity:.6;"></div>
-              </div>
+            <div class="hero__thumb">
+              <strong>必要な写真 02</strong>
+              <span>施工現場、外壁、屋根、足場など業種が伝わるカット</span>
             </div>
           </div>
         </div>
-        <div class="mockup-device mockup-device--phone" style="position:absolute;right:-60px;bottom:0;">
-          <div class="mockup-screen">
-            <div class="mockup-bar mockup-bar--short"></div>
-            <div class="mockup-bar mockup-bar--medium"></div>
-            <div class="mockup-card" style="margin-top:6px;">
-              <div class="mockup-card-title"></div>
-              <div class="mockup-card-lines">
-                <div class="mockup-card-line"></div>
-                <div class="mockup-card-line" style="width:75%"></div>
-              </div>
-            </div>
-            <div class="mockup-card">
-              <div class="mockup-card-title"></div>
-              <div class="mockup-card-lines">
-                <div class="mockup-card-line" style="width:85%"></div>
-                <div class="mockup-card-line" style="width:60%"></div>
-              </div>
-            </div>
-          </div>
+      </div>
+      <div class="hero__consult-card">
+        <div class="hero__consult-kicker">CONSULT MENU</div>
+        <h3 class="hero__consult-title">まずは追客の流れを整理する相談から</h3>
+        <p class="hero__consult-desc">反響対応から見積提出後のフォロー、OB顧客への再接点まで。現在の営業導線をもとに、LINEでどこを仕組み化できるかを一緒に整理します。</p>
+        <ul class="hero__consult-list">
+          <li>見積提出後に止まりやすい箇所を棚卸し</li>
+          <li>LINE登録後のヒアリング導線を整理</li>
+          <li>OB顧客向けの点検・再提案配信を設計</li>
+        </ul>
+        <div class="hero__consult-tags">
+          <span>見積後追客</span>
+          <span>OB顧客配信</span>
+          <span>営業管理共有</span>
+          <span>LINE導線設計</span>
         </div>
-        <div class="hero__float-badge">
-          <div class="hero__float-badge-icon"><img src="assets/icons/hero-open-rate.svg" alt=""></div>
-          <div>
-            <div style="color:var(--primary)">+32%</div>
-            <div style="font-weight:400;color:var(--text-light)">開封率UP</div>
-          </div>
-        </div>
-        <div class="hero__float-badge2">
-          <img src="assets/icons/hero-new-customers.svg" alt="" class="icon-inline"> 新規顧客 +128人 / 今月
-        </div>
+        <a href="#contact" class="btn btn--primary" style="width:100%;justify-content:center;">相談内容を送る</a>
+        <p class="hero__consult-note">※ まだ写真素材がなくても、運用イメージの整理と必要素材の洗い出しから進められます。</p>
       </div>
     </div>
   </div>
@@ -1443,14 +2162,28 @@
 <!-- ===== LOGO STRIP ===== -->
 <section class="logos">
   <div class="logos__inner">
-    <p class="logos__label">導入実績 · 掲載メディア</p>
+    <p class="logos__label">導入前に相談できること</p>
     <div class="logos__row">
-      <div class="logo-item">日本経済新聞</div>
-      <div class="logo-item">Forbes JAPAN</div>
-      <div class="logo-item">TechCrunch</div>
-      <div class="logo-item">ASCII.jp</div>
-      <div class="logo-item">IT Leaders</div>
-      <div class="logo-item">MarkeZine</div>
+      <div class="logo-item">
+        <span class="logo-item__badge">01</span>
+        <strong class="logo-item__title">LINE公式アカウント運用資格を前提に相談</strong>
+        <span class="logo-item__desc">資格保有の運用視点で、住宅・リフォーム業向けの導線設計を整理します。</span>
+      </div>
+      <div class="logo-item">
+        <span class="logo-item__badge">02</span>
+        <strong class="logo-item__title">見積後追客の流れを標準化</strong>
+        <span class="logo-item__desc">見積提出後の3日後・7日後フォローなど、止まりやすい追客の流れを固めます。</span>
+      </div>
+      <div class="logo-item">
+        <span class="logo-item__badge">03</span>
+        <strong class="logo-item__title">OB顧客の再接点づくり</strong>
+        <span class="logo-item__desc">点検案内、小修繕提案、季節訴求など、施工後の配信テーマを整えます。</span>
+      </div>
+      <div class="logo-item">
+        <span class="logo-item__badge">04</span>
+        <strong class="logo-item__title">営業管理の属人化を見える化</strong>
+        <span class="logo-item__desc">担当者ごとにバラつきやすい対応履歴と次回アクションを共有しやすくします。</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1460,45 +2193,52 @@
   <div class="container">
     <div class="about-grid fade-in">
       <div class="about__img-area">
+        <div class="about__photo-slot">
+          <div class="about__photo-slot-content">
+            <div class="about__photo-slot-label">PHOTO SPACE</div>
+            <div class="about__photo-slot-title">施工写真 / 現場風景 / スタッフ写真</div>
+            <div class="about__photo-slot-note">後から実写に差し替える前提のビジュアル枠です。まずは現場感をつくるためのプレースホルダーとして配置しています。</div>
+          </div>
+        </div>
         <div class="about-card">
           <div class="about-card__icon"><img src="assets/icons/about-customers.svg" alt=""></div>
-          <div class="about-card__label">登録顧客数</div>
-          <div class="about-card__val">50K+</div>
+          <div class="about-card__label">見積後追客</div>
+          <div class="about-card__val">自動化</div>
         </div>
         <div class="about-card">
           <div class="about-card__icon"><img src="assets/icons/about-message-volume.svg" alt=""></div>
-          <div class="about-card__label">月間配信数</div>
-          <div class="about-card__val">2M+</div>
+          <div class="about-card__label">OB顧客配信</div>
+          <div class="about-card__val">再接点</div>
         </div>
         <div class="about-card">
           <div class="about-card__icon"><img src="assets/icons/about-stores.svg" alt=""></div>
-          <div class="about-card__label">導入店舗数</div>
-          <div class="about-card__val">1,200+</div>
+          <div class="about-card__label">営業管理共有</div>
+          <div class="about-card__val">見える化</div>
         </div>
         <div class="about-card">
           <div class="about-card__icon"><img src="assets/icons/about-satisfaction.svg" alt=""></div>
-          <div class="about-card__label">顧客満足度</div>
-          <div class="about-card__val">98%</div>
+          <div class="about-card__label">LINE導線設計</div>
+          <div class="about-card__val">資格保有</div>
         </div>
       </div>
       <div class="about__text">
-        <div class="label-tag">COMSBI とは？</div>
-        <h2 class="section-title">LINEを活用した<br>顧客管理・集客の<br>すべてがここに</h2>
+        <div class="label-tag">住宅業界向け</div>
+        <h2 class="section-title">反響対応から<br>見積後フォロー、<br>OB顧客の再接点まで</h2>
         <p style="font-size:14px;color:var(--text-light);line-height:1.85;">
-          COMSBIは、LINE公式アカウントと連携したビジネス向けクラウドサービスです。顧客管理・予約管理・メッセージ配信・分析まで、業務を横断的にサポートします。
+          COMSBIは、住宅会社・リフォーム会社・外壁塗装会社・屋根工事会社の営業導線に合わせて、LINE公式アカウントを追客ツールとして使いやすくするためのサービスです。反響直後の初動、見積提出後の温度感管理、OB顧客への点検・再提案までを一本化します。
         </p>
         <div class="about__points">
           <div class="about__point">
             <div class="about__point-check">✓</div>
-            <div>顧客情報をLINEと自動連携。来店履歴・購入履歴を一元管理</div>
+            <div>見積提出後の放置を防ぎ、検討状況に応じた追客をLINEで自動化</div>
           </div>
           <div class="about__point">
             <div class="about__point-check">✓</div>
-            <div>セグメント配信で開封率・リピート率を劇的に改善</div>
+            <div>OB顧客に向けて点検案内・メンテ提案・キャンペーン配信を継続運用</div>
           </div>
           <div class="about__point">
             <div class="about__point-check">✓</div>
-            <div>直感的なダッシュボードで経営データをリアルタイム把握</div>
+            <div>営業ごとの対応状況を共有し、属人化しがちな追客管理を標準化</div>
           </div>
         </div>
       </div>
@@ -1511,31 +2251,31 @@
   <div class="container">
     <div class="text-center fade-in">
       <div class="label-tag">CASE STUDY</div>
-      <h2 class="section-title">COMSBI活用事例</h2>
-      <p class="section-sub">業種ごとに異なるLINE活用を、現場オペレーションまで落とし込めます</p>
+      <h2 class="section-title">住宅・リフォーム業の活用事例</h2>
+      <p class="section-sub">見積後の追客、OB顧客への再接点、営業進捗の共有まで。業種ごとの運用イメージを具体化しています</p>
     </div>
     <div class="case-studies fade-in" data-case-slider>
       <button class="case-study-nav case-study-nav--prev" type="button" data-case-prev aria-label="前の活用事例"></button>
       <div class="case-study-slider">
         <div class="case-study-track">
-      <article class="case-study-card case-study-card--side case-study-card--featured is-active" data-case-slide>
+      <article class="case-study-card case-study-card--side case-study-card--featured is-active" data-case-slide style="--case-photo: var(--case-01-image);">
         <div class="case-study-card__top">
           <div class="case-study-card__head">
             <span class="case-study-card__num">01</span>
-            <h3 class="case-study-card__title">美容サロン</h3>
+            <h3 class="case-study-card__title">リフォーム会社</h3>
           </div>
           <div class="case-study-tags">
-            <span>予約</span>
-            <span>来店後配信</span>
+            <span>見積後追客</span>
+            <span>検討状況</span>
           </div>
         </div>
-        <p class="case-study-card__desc">友だち追加時にカウンセリングフォームを送信し、予約情報と来店履歴をひも付け。施術周期に合わせた再来店リマインドまで自動化できます。</p>
+        <p class="case-study-card__desc">現地調査後にLINEで見積内容の補足と事例配信を行い、検討状況に応じてフォローを自動化。担当者ごとの差が出やすい見積後追客を標準化できます。</p>
         <div class="case-study-scene case-study-scene--compact">
           <div class="case-study-phone">
             <div class="case-study-phone__screen">
               <div class="case-study-phone__bubble">
-                初回のご予約ありがとうございます
-                <strong>事前カウンセリングを回答</strong>
+                現地調査ありがとうございました
+                <strong>見積内容のご相談はこちら</strong>
               </div>
               <div class="case-study-phone__card">
                 <div class="case-study-line case-study-line--green case-study-line--mid"></div>
@@ -1551,7 +2291,7 @@
             </div>
           </div>
           <div class="case-study-panel">
-            <div class="case-study-panel__label">管理画面イメージ</div>
+            <div class="case-study-panel__label">追客管理イメージ</div>
             <div class="case-study-panel__head"></div>
             <div class="case-study-panel__body">
               <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
@@ -1563,27 +2303,27 @@
               <div class="case-study-panel__foot"><span></span><span></span></div>
             </div>
           </div>
-          <div class="case-study-note case-study-note--left">来店周期ごとに<br>自動配信シナリオを設定</div>
+          <div class="case-study-note case-study-note--left">見積提出3日後・7日後で<br>自動フォローを設定</div>
         </div>
       </article>
-      <article class="case-study-card case-study-card--side" data-case-slide>
+      <article class="case-study-card case-study-card--side" data-case-slide style="--case-photo: var(--case-02-image);">
         <div class="case-study-card__top">
           <div class="case-study-card__head">
             <span class="case-study-card__num">02</span>
-            <h3 class="case-study-card__title">スーパー・ドラッグ</h3>
+            <h3 class="case-study-card__title">住宅会社</h3>
           </div>
           <div class="case-study-tags">
-            <span>フォーム</span>
-            <span>タグ</span>
+            <span>反響初動</span>
+            <span>来場予約</span>
           </div>
         </div>
-        <p class="case-study-card__desc">回答フォームで取得した情報を顧客属性に変換し、生活圏や購買傾向に合わせてセグメント配信。店舗横断で使える販促基盤をつくれます。</p>
+        <p class="case-study-card__desc">資料請求や来場予約の反響直後に、自動返信とヒアリング導線を送信。検討度の高い見込み客を早めに可視化し、来場・相談につなげやすくします。</p>
         <div class="case-study-scene">
           <div class="case-study-phone">
             <div class="case-study-phone__screen">
               <div class="case-study-phone__bubble">
-                友だち追加ありがとうございます
-                <strong>アンケートに答える</strong>
+                資料請求ありがとうございます
+                <strong>来場予約・相談希望を送る</strong>
               </div>
               <div class="case-study-phone__card">
                 <div class="case-study-line case-study-line--green case-study-line--mid"></div>
@@ -1601,7 +2341,7 @@
           </div>
           <div class="case-study-arrow"></div>
           <div class="case-study-panel">
-            <div class="case-study-panel__label">管理画面イメージ</div>
+            <div class="case-study-panel__label">反響管理イメージ</div>
             <div class="case-study-panel__head"></div>
             <div class="case-study-panel__body">
               <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
@@ -1614,25 +2354,25 @@
               <div class="case-study-panel__foot"><span></span><span></span><span></span></div>
             </div>
           </div>
-          <div class="case-study-note case-study-note--right">タグも回答ごとに<br>自動付与できます</div>
-          <div class="case-study-note case-study-note--bottom">取得した属性情報で<br>配信セグメントを生成</div>
+          <div class="case-study-note case-study-note--right">来場希望・検討時期を<br>回答ごとに自動付与</div>
+          <div class="case-study-note case-study-note--bottom">反響直後の自動返信で<br>初動スピードを底上げ</div>
         </div>
       </article>
-      <article class="case-study-card case-study-card--side" data-case-slide>
+      <article class="case-study-card case-study-card--side" data-case-slide style="--case-photo: var(--case-03-image);">
         <div class="case-study-card__top">
           <div class="case-study-card__head">
             <span class="case-study-card__num">03</span>
-            <h3 class="case-study-card__title">商業施設</h3>
+            <h3 class="case-study-card__title">外壁塗装会社</h3>
           </div>
           <div class="case-study-tags">
-            <span>ポイント</span>
-            <span>クーポン</span>
+            <span>現調後フォロー</span>
+            <span>施工事例</span>
           </div>
         </div>
-        <p class="case-study-card__desc">LINEアカウントをポイントカードやクーポン接点とつなぎ、フロア横断で回遊促進。購買行動と接客履歴を一元管理できます。</p>
+        <p class="case-study-card__desc">現地調査後のタイミングで、似た施工事例や塗料比較、助成金情報を段階配信。金額比較で止まりやすい見込み客に対して、検討材料をLINEで届け続けられます。</p>
         <div class="case-study-scene case-study-scene--compact">
           <div class="case-study-panel">
-            <div class="case-study-panel__label">店舗一覧イメージ</div>
+            <div class="case-study-panel__label">配信管理イメージ</div>
             <div class="case-study-panel__head"></div>
             <div class="case-study-panel__body">
               <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
@@ -1644,25 +2384,25 @@
               <div class="case-study-panel__foot"><span></span><span></span></div>
             </div>
           </div>
-          <div class="case-study-note case-study-note--right">マルチアカウントを<br>一元管理</div>
-          <div class="case-study-note case-study-note--left">ポイント接点から<br>顧客情報を統合</div>
+          <div class="case-study-note case-study-note--right">塗料別・価格帯別に<br>事例を出し分け</div>
+          <div class="case-study-note case-study-note--left">現調後の温度感に合わせて<br>配信内容を切り替え</div>
         </div>
       </article>
-      <article class="case-study-card case-study-card--side" data-case-slide>
+      <article class="case-study-card case-study-card--side" data-case-slide style="--case-photo: var(--case-04-image);">
         <div class="case-study-card__top">
           <div class="case-study-card__head">
             <span class="case-study-card__num">04</span>
-            <h3 class="case-study-card__title">複数店舗ペットサロン</h3>
+            <h3 class="case-study-card__title">屋根工事会社</h3>
           </div>
           <div class="case-study-tags">
-            <span>マルチアカウント</span>
-            <span>会員証</span>
+            <span>緊急反響</span>
+            <span>複数担当</span>
           </div>
         </div>
-        <p class="case-study-card__desc">複数店舗のLINEアカウントを1つの顧客基盤で管理し、来店履歴や会員ランクを店舗横断で参照。再来店キャンペーンも一括で配信できます。</p>
+        <p class="case-study-card__desc">雨漏りや破損など緊急性の高い問い合わせに対して、受付・日程調整・担当引き継ぎをLINEで整理。折り返し漏れや担当不在時の対応遅れを防ぎます。</p>
         <div class="case-study-scene case-study-scene--compact">
           <div class="case-study-panel">
-            <div class="case-study-panel__label">店舗統合イメージ</div>
+            <div class="case-study-panel__label">担当共有イメージ</div>
             <div class="case-study-panel__head"></div>
             <div class="case-study-panel__body">
               <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
@@ -1678,8 +2418,8 @@
           <div class="case-study-phone">
             <div class="case-study-phone__screen">
               <div class="case-study-phone__bubble">
-                ご来店ありがとうございます
-                <strong>会員ランクが更新されました</strong>
+                お問い合わせを受け付けました
+                <strong>現地確認日程を調整する</strong>
               </div>
               <div class="case-study-phone__card">
                 <div class="case-study-line case-study-line--green case-study-line--long"></div>
@@ -1694,27 +2434,27 @@
               </div>
             </div>
           </div>
-          <div class="case-study-note case-study-note--right">会員情報を全店舗で<br>共通利用</div>
+          <div class="case-study-note case-study-note--right">担当不在でも進捗を<br>全員で共有</div>
         </div>
       </article>
-      <article class="case-study-card case-study-card--side" data-case-slide>
+      <article class="case-study-card case-study-card--side" data-case-slide style="--case-photo: var(--case-05-image);">
         <div class="case-study-card__top">
           <div class="case-study-card__head">
             <span class="case-study-card__num">05</span>
-            <h3 class="case-study-card__title">フィットネスジム</h3>
+            <h3 class="case-study-card__title">地域工務店</h3>
           </div>
           <div class="case-study-tags">
-            <span>休眠復活</span>
-            <span>スタンプ</span>
+            <span>OB顧客</span>
+            <span>点検案内</span>
           </div>
         </div>
-        <p class="case-study-card__desc">来館頻度が落ちた会員を自動抽出し、パーソナルメニューや体験イベントを個別配信。チェックイン連動のスタンプ施策で継続率を高められます。</p>
+        <p class="case-study-card__desc">引き渡し後のOB顧客に向けて、定期点検・小修繕・季節のメンテナンス案内をLINE配信。紹介や再工事につながる再接点を継続的につくれます。</p>
         <div class="case-study-scene">
           <div class="case-study-phone">
             <div class="case-study-phone__screen">
               <div class="case-study-phone__bubble">
-                今週の来館がまだありません
-                <strong>限定プログラムを予約</strong>
+                定期点検の時期です
+                <strong>点検希望日を送る</strong>
               </div>
               <div class="case-study-phone__card">
                 <div class="case-study-line case-study-line--green case-study-line--mid"></div>
@@ -1731,7 +2471,7 @@
           </div>
           <div class="case-study-arrow"></div>
           <div class="case-study-panel">
-            <div class="case-study-panel__label">会員分析イメージ</div>
+            <div class="case-study-panel__label">OB配信イメージ</div>
             <div class="case-study-panel__head"></div>
             <div class="case-study-panel__body">
               <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
@@ -1744,27 +2484,27 @@
               <div class="case-study-panel__foot"><span></span><span></span><span></span></div>
             </div>
           </div>
-          <div class="case-study-note case-study-note--bottom">来館頻度の低下会員を<br>自動で抽出</div>
+          <div class="case-study-note case-study-note--bottom">施工後1年・3年・5年で<br>案内を自動送信</div>
         </div>
       </article>
-      <article class="case-study-card case-study-card--side" data-case-slide>
+      <article class="case-study-card case-study-card--side" data-case-slide style="--case-photo: var(--case-06-image);">
         <div class="case-study-card__top">
           <div class="case-study-card__head">
             <span class="case-study-card__num">06</span>
-            <h3 class="case-study-card__title">クリニック</h3>
+            <h3 class="case-study-card__title">複数拠点リフォーム会社</h3>
           </div>
           <div class="case-study-tags">
-            <span>問診</span>
-            <span>リマインド</span>
+            <span>営業共有</span>
+            <span>拠点管理</span>
           </div>
         </div>
-        <p class="case-study-card__desc">予約前の事前問診をLINEで回収し、来院前の注意事項や検査案内を自動送信。予約忘れ防止と受付業務の省力化を同時に実現できます。</p>
+        <p class="case-study-card__desc">複数の営業担当・拠点でLINE反響を扱う場合でも、進捗・温度感・次回アクションを共通管理。店長や責任者が追客状況を把握しやすくなります。</p>
         <div class="case-study-scene case-study-scene--compact">
           <div class="case-study-phone">
             <div class="case-study-phone__screen">
               <div class="case-study-phone__bubble">
-                明日のご予約を確認しました
-                <strong>事前問診を入力する</strong>
+                次回のフォロー予定です
+                <strong>担当者メモを確認する</strong>
               </div>
               <div class="case-study-phone__card">
                 <div class="case-study-line case-study-line--green case-study-line--mid"></div>
@@ -1780,7 +2520,7 @@
             </div>
           </div>
           <div class="case-study-panel">
-            <div class="case-study-panel__label">問診管理イメージ</div>
+            <div class="case-study-panel__label">営業進捗イメージ</div>
             <div class="case-study-panel__head"></div>
             <div class="case-study-panel__body">
               <div class="case-study-panel__toolbar"><span></span><span></span><span></span></div>
@@ -1792,7 +2532,7 @@
               <div class="case-study-panel__foot"><span></span><span></span></div>
             </div>
           </div>
-          <div class="case-study-note case-study-note--left">来院前の確認事項を<br>自動で送信</div>
+          <div class="case-study-note case-study-note--left">追客の抜け漏れを<br>責任者が一覧で確認</div>
         </div>
       </article>
         </div>
@@ -1800,12 +2540,12 @@
       <button class="case-study-nav case-study-nav--next" type="button" data-case-next aria-label="次の活用事例"></button>
     </div>
     <div class="case-study-pagination fade-in" aria-label="活用事例スライダー">
-      <button type="button" aria-label="活用事例 1: 美容サロン" aria-current="true" class="is-active" data-case-dot></button>
-      <button type="button" aria-label="活用事例 2: スーパー・ドラッグ" aria-current="false" data-case-dot></button>
-      <button type="button" aria-label="活用事例 3: 商業施設" aria-current="false" data-case-dot></button>
-      <button type="button" aria-label="活用事例 4: 複数店舗ペットサロン" aria-current="false" data-case-dot></button>
-      <button type="button" aria-label="活用事例 5: フィットネスジム" aria-current="false" data-case-dot></button>
-      <button type="button" aria-label="活用事例 6: クリニック" aria-current="false" data-case-dot></button>
+      <button type="button" aria-label="活用事例 1: リフォーム会社" aria-current="true" class="is-active" data-case-dot></button>
+      <button type="button" aria-label="活用事例 2: 住宅会社" aria-current="false" data-case-dot></button>
+      <button type="button" aria-label="活用事例 3: 外壁塗装会社" aria-current="false" data-case-dot></button>
+      <button type="button" aria-label="活用事例 4: 屋根工事会社" aria-current="false" data-case-dot></button>
+      <button type="button" aria-label="活用事例 5: 地域工務店" aria-current="false" data-case-dot></button>
+      <button type="button" aria-label="活用事例 6: 複数拠点リフォーム会社" aria-current="false" data-case-dot></button>
     </div>
   </div>
 </section>
@@ -1815,36 +2555,36 @@
   <div class="container">
     <div class="text-center fade-in">
       <div class="label-tag">選ばれる理由</div>
-      <h2 class="section-title">COMSBIが選ばれる4つの理由</h2>
-      <p class="section-sub">1,200社以上が選んだ、確かな実績と信頼</p>
+      <h2 class="section-title">住宅・リフォーム業に合わせて使いやすい4つの理由</h2>
+      <p class="section-sub">営業現場で回ることを優先して、見積後追客・OB掘り起こし・担当共有に寄せて設計します</p>
     </div>
     <div class="reasons-grid fade-in">
       <div class="reason-card">
         <div class="reason-num">01</div>
         <div class="reason-body">
-          <h3>LINE公式と完全統合</h3>
-          <p>LINEの友だちリストと顧客データが自動同期。新たなID管理なしに、既存のLINE資産を最大活用できます。</p>
+          <h3>見積提出後の追客漏れを防げる</h3>
+          <p>提出後の3日後・7日後・14日後など、追客タイミングをルール化。担当者ごとにバラつきやすいフォローを仕組み化できます。</p>
         </div>
       </div>
       <div class="reason-card">
         <div class="reason-num">02</div>
         <div class="reason-body">
-          <h3>ノーコードで即運用開始</h3>
-          <p>プログラミング不要。直感的なUI設計で、ITに不慣れなスタッフでも最短1日で運用をスタートできます。</p>
+          <h3>OB顧客への再接点を作りやすい</h3>
+          <p>点検案内、小修繕の提案、季節のメンテナンス配信など、引き渡し後の接点をLINEで継続。紹介や再受注につながる導線を持てます。</p>
         </div>
       </div>
       <div class="reason-card">
         <div class="reason-num">03</div>
         <div class="reason-body">
-          <h3>業種特化のテンプレート</h3>
-          <p>美容・飲食・小売・医療など業種別テンプレートを完備。導入直後から成果につながる設定で運用可能です。</p>
+          <h3>営業管理の属人化を減らせる</h3>
+          <p>誰がどこまで対応したか、次回フォローはいつかを一覧化。店長や責任者が進捗を把握しやすく、担当交代にも対応しやすくなります。</p>
         </div>
       </div>
       <div class="reason-card">
         <div class="reason-num">04</div>
         <div class="reason-body">
-          <h3>安心のサポート体制</h3>
-          <p>専任のカスタマーサクセスチームが導入から運用まで伴走。チャット・電話サポートを平日提供しています。</p>
+          <h3>LINE運用資格ベースで設計相談できる</h3>
+          <p>新規事業として派手な実績を盛るのではなく、LINE公式アカウントの運用知見をもとに、業種・営業体制に合う現実的な導線をご提案します。</p>
         </div>
       </div>
     </div>
@@ -1854,11 +2594,11 @@
 <!-- ===== CTA BANNER ===== -->
 <section class="section--dark cta-banner">
   <div class="container fade-in">
-    <h2>LINEを使って<br>もっとビジネスを加速しませんか？</h2>
-    <p>今すぐ無料トライアルを開始して、COMSBIの効果を実感してください</p>
+    <h2>見積後の追客と<br>OB顧客の再接点を、<br>現場で回る形にしませんか？</h2>
+    <p>住宅・リフォーム業の営業導線に合わせて、LINE活用の設計からご相談いただけます</p>
     <div class="cta-banner__actions">
-      <a href="#contact" class="btn btn--primary">無料で30日間試す</a>
-      <a href="#plans" class="btn btn--outline">プランを確認する</a>
+      <a href="#contact" class="btn btn--primary">追客設計を相談する</a>
+      <a href="#plans" class="btn btn--outline">運用メニューを見る</a>
     </div>
   </div>
 </section>
@@ -1867,146 +2607,142 @@
 <section class="section section--gray" id="plans">
   <div class="container">
     <div class="text-center fade-in">
-      <div class="label-tag">プラン</div>
-      <h2 class="section-title">シンプルな料金プラン</h2>
-      <p class="section-sub">すべてのプランで30日間無料トライアル可能。カード登録不要でお試しいただけます。</p>
+      <div class="label-tag">運用メニュー</div>
+      <h2 class="section-title">状況に合わせて運用設計できます</h2>
+      <p class="section-sub">見積後追客を強めたい会社から、OB顧客の掘り起こし、複数担当の営業管理まで。相談内容に合わせて整理します</p>
     </div>
     <div class="plans-grid fade-in">
-      <!-- Lite -->
       <div class="plan-card">
         <div class="plan-card__head">
-          <div class="plan-card__name">Lite</div>
-          <div class="plan-card__price"><sup>¥</sup>4,980<sub>/月</sub></div>
-          <div class="plan-card__period">年払い時 ¥4,480/月</div>
+          <div class="plan-card__name">追客自動化</div>
+          <div class="plan-card__price">初動・見積後</div>
+          <div class="plan-card__period">見積提出後のフォローを整えたい会社向け</div>
         </div>
         <div class="plan-card__body">
           <ul class="plan-feature-list">
-            <li><span class="check check--yes">✓</span>顧客登録 最大500名</li>
-            <li><span class="check check--yes">✓</span>LINEメッセージ配信</li>
-            <li><span class="check check--yes">✓</span>基本CRM</li>
-            <li><span class="check check--yes">✓</span>クーポン発行</li>
-            <li><span class="check check--no">—</span>予約管理</li>
-            <li><span class="check check--no">—</span>高度な分析</li>
-            <li><span class="check check--no">—</span>API連携</li>
+            <li><span class="check check--yes">✓</span>反響直後の自動返信</li>
+            <li><span class="check check--yes">✓</span>見積提出後の追客シナリオ</li>
+            <li><span class="check check--yes">✓</span>検討状況のタグ管理</li>
+            <li><span class="check check--yes">✓</span>来店・現調の日程調整</li>
+            <li><span class="check check--yes">✓</span>施工事例の段階配信</li>
+            <li><span class="check check--no">—</span>OB顧客の定期配信</li>
+            <li><span class="check check--no">—</span>複数担当の進捗共有</li>
           </ul>
           <div class="plan-card__cta">
-            <a href="#contact" class="btn btn--outline" style="color:var(--primary);border-color:var(--primary);width:100%;justify-content:center;">トライアル開始</a>
+            <a href="#contact" class="btn btn--outline" style="color:var(--primary);border-color:var(--primary);width:100%;justify-content:center;">この内容で相談する</a>
           </div>
         </div>
       </div>
-      <!-- Standard (Featured) -->
       <div class="plan-card plan-card--featured">
         <div class="plan-card__head">
-          <span class="plan-card__badge">人気 No.1</span>
-          <div class="plan-card__name">Standard</div>
-          <div class="plan-card__price"><sup>¥</sup>12,800<sub>/月</sub></div>
-          <div class="plan-card__period">年払い時 ¥10,800/月</div>
+          <span class="plan-card__badge">おすすめ</span>
+          <div class="plan-card__name">OB掘り起こし</div>
+          <div class="plan-card__price">点検・再提案</div>
+          <div class="plan-card__period">引き渡し後の接点づくりを強化したい会社向け</div>
         </div>
         <div class="plan-card__body">
           <ul class="plan-feature-list">
-            <li><span class="check check--yes">✓</span>顧客登録 最大3,000名</li>
-            <li><span class="check check--yes">✓</span>LINEメッセージ配信</li>
-            <li><span class="check check--yes">✓</span>高度CRM ＋ セグメント</li>
-            <li><span class="check check--yes">✓</span>クーポン＋スタンプ</li>
-            <li><span class="check check--yes">✓</span>予約管理</li>
-            <li><span class="check check--yes">✓</span>分析ダッシュボード</li>
-            <li><span class="check check--no">—</span>API連携</li>
+            <li><span class="check check--yes">✓</span>点検時期の自動案内</li>
+            <li><span class="check check--yes">✓</span>メンテナンス提案配信</li>
+            <li><span class="check check--yes">✓</span>休眠顧客の再接点</li>
+            <li><span class="check check--yes">✓</span>施工事例・季節情報の配信</li>
+            <li><span class="check check--yes">✓</span>紹介キャンペーン導線</li>
+            <li><span class="check check--yes">✓</span>担当別の履歴管理</li>
+            <li><span class="check check--no">—</span>複数拠点の横断管理</li>
           </ul>
           <div class="plan-card__cta">
-            <a href="#contact" class="btn btn--primary" style="width:100%;justify-content:center;">トライアル開始</a>
+            <a href="#contact" class="btn btn--primary" style="width:100%;justify-content:center;">この内容で相談する</a>
           </div>
         </div>
       </div>
-      <!-- Pro -->
       <div class="plan-card">
         <div class="plan-card__head">
-          <div class="plan-card__name">Pro</div>
-          <div class="plan-card__price"><sup>¥</sup>29,800<sub>/月</sub></div>
-          <div class="plan-card__period">年払い時 ¥25,800/月</div>
+          <div class="plan-card__name">営業管理</div>
+          <div class="plan-card__price">共有・標準化</div>
+          <div class="plan-card__period">担当ごとの対応差を減らしたい会社向け</div>
         </div>
         <div class="plan-card__body">
           <ul class="plan-feature-list">
-            <li><span class="check check--yes">✓</span>顧客登録 無制限</li>
-            <li><span class="check check--yes">✓</span>LINEメッセージ配信</li>
-            <li><span class="check check--yes">✓</span>高度CRM ＋ セグメント</li>
-            <li><span class="check check--yes">✓</span>クーポン＋スタンプ</li>
-            <li><span class="check check--yes">✓</span>予約管理</li>
-            <li><span class="check check--yes">✓</span>高度な分析 ＋ CSV出力</li>
-            <li><span class="check check--yes">✓</span>API・外部サービス連携</li>
+            <li><span class="check check--yes">✓</span>営業進捗の一覧管理</li>
+            <li><span class="check check--yes">✓</span>担当別の対応履歴</li>
+            <li><span class="check check--yes">✓</span>追客漏れ防止の運用ルール化</li>
+            <li><span class="check check--yes">✓</span>複数担当・拠点の共有</li>
+            <li><span class="check check--yes">✓</span>反響の振り分け整理</li>
+            <li><span class="check check--yes">✓</span>OB顧客管理の統合</li>
+            <li><span class="check check--yes">✓</span>LINE運用設計の相談</li>
           </ul>
           <div class="plan-card__cta">
-            <a href="#contact" class="btn btn--outline" style="color:var(--primary);border-color:var(--primary);width:100%;justify-content:center;">トライアル開始</a>
+            <a href="#contact" class="btn btn--outline" style="color:var(--primary);border-color:var(--primary);width:100%;justify-content:center;">この内容で相談する</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Comparison Table -->
     <div class="fade-in">
-      <h3 style="text-align:center;font-size:18px;font-weight:700;margin-bottom:8px;">プラン比較表</h3>
+      <h3 style="text-align:center;font-size:18px;font-weight:700;margin-bottom:8px;">対応内容の比較</h3>
       <table class="compare-table">
         <thead>
           <tr>
-            <th>機能</th>
-            <th>Lite</th>
-            <th class="th--featured">Standard</th>
-            <th>Pro</th>
+            <th>対応内容</th>
+            <th>追客自動化</th>
+            <th class="th--featured">OB掘り起こし</th>
+            <th>営業管理</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>顧客登録数上限</td>
-            <td>500名</td>
-            <td class="td--featured">3,000名</td>
-            <td>無制限</td>
-          </tr>
-          <tr>
-            <td>LINEメッセージ配信</td>
+            <td>反響直後の自動返信</td>
             <td><span class="check-icon">✓</span></td>
-            <td class="td--featured"><span class="check-icon">✓</span></td>
+            <td class="td--featured"><span class="dash-icon">—</span></td>
             <td><span class="check-icon">✓</span></td>
           </tr>
           <tr>
-            <td>セグメント配信</td>
+            <td>見積提出後の自動フォロー</td>
+            <td><span class="check-icon">✓</span></td>
+            <td class="td--featured"><span class="dash-icon">—</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td>OB顧客への定期配信</td>
             <td><span class="dash-icon">—</span></td>
             <td class="td--featured"><span class="check-icon">✓</span></td>
             <td><span class="check-icon">✓</span></td>
           </tr>
           <tr>
-            <td>クーポン発行</td>
-            <td><span class="check-icon">✓</span></td>
-            <td class="td--featured"><span class="check-icon">✓</span></td>
-            <td><span class="check-icon">✓</span></td>
-          </tr>
-          <tr>
-            <td>スタンプカード</td>
+            <td>点検・メンテナンス案内</td>
             <td><span class="dash-icon">—</span></td>
             <td class="td--featured"><span class="check-icon">✓</span></td>
             <td><span class="check-icon">✓</span></td>
           </tr>
           <tr>
-            <td>予約管理</td>
-            <td><span class="dash-icon">—</span></td>
-            <td class="td--featured"><span class="check-icon">✓</span></td>
-            <td><span class="check-icon">✓</span></td>
-          </tr>
-          <tr>
-            <td>分析ダッシュボード</td>
-            <td>基本</td>
-            <td class="td--featured">高度</td>
-            <td>高度＋CSV</td>
-          </tr>
-          <tr>
-            <td>API・外部連携</td>
+            <td>営業進捗の共有</td>
             <td><span class="dash-icon">—</span></td>
             <td class="td--featured"><span class="dash-icon">—</span></td>
             <td><span class="check-icon">✓</span></td>
           </tr>
           <tr>
-            <td>サポート</td>
-            <td>チャット</td>
-            <td class="td--featured">チャット＋電話</td>
-            <td>専任担当</td>
+            <td>複数担当・拠点の管理</td>
+            <td><span class="dash-icon">—</span></td>
+            <td class="td--featured"><span class="dash-icon">—</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td>施工事例の出し分け配信</td>
+            <td><span class="check-icon">✓</span></td>
+            <td class="td--featured"><span class="check-icon">✓</span></td>
+            <td><span class="dash-icon">—</span></td>
+          </tr>
+          <tr>
+            <td>LINE運用設計の相談</td>
+            <td>可</td>
+            <td class="td--featured">可</td>
+            <td>可</td>
+          </tr>
+          <tr>
+            <td>既存LINE公式アカウント連携</td>
+            <td><span class="check-icon">✓</span></td>
+            <td class="td--featured"><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
           </tr>
         </tbody>
       </table>
@@ -2015,14 +2751,21 @@
 </section>
 
 <!-- ===== CONTACT ===== -->
-<section class="section" id="contact" style="background:var(--primary-pale);">
+<section class="section" id="contact">
   <div class="container">
     <div class="text-center fade-in" style="margin-bottom:40px;">
-      <div class="label-tag">お問い合わせ</div>
-      <h2 class="section-title">お気軽にご相談ください</h2>
-      <p class="section-sub">資料請求・無料トライアル・ご不明点など、お気軽にどうぞ</p>
+      <div class="label-tag">ご相談</div>
+      <h2 class="section-title">LINE追客の運用設計をご相談ください</h2>
+      <p class="section-sub">住宅・リフォーム業の営業導線に合わせて、見積後追客やOB顧客の掘り起こし方法をご案内します</p>
+    </div>
+    <div class="contact-points fade-in">
+      <span>見積後追客の棚卸し</span>
+      <span>OB顧客配信の設計</span>
+      <span>営業管理の共有ルール整理</span>
+      <span>必要な写真素材の洗い出し</span>
     </div>
     <div class="contact-form-wrap fade-in">
+      <div class="contact-form-lead">現在のLINE運用が固まっていなくても問題ありません。反響の入り口、見積提出後の追客、OB顧客配信のどこから整えるべきかを、現状に合わせて整理します。</div>
       <div class="form-group">
         <label class="form-label">お名前 <span>必須</span></label>
         <input type="text" class="form-input" placeholder="例：山田 太郎">
@@ -2043,20 +2786,20 @@
         <label class="form-label">お問い合わせ種別 <span>必須</span></label>
         <select class="form-select">
           <option value="">選択してください</option>
-          <option>資料請求</option>
-          <option>無料トライアル</option>
-          <option>機能についての質問</option>
-          <option>料金についての質問</option>
+          <option>見積後追客について相談したい</option>
+          <option>OB顧客の掘り起こしについて相談したい</option>
+          <option>営業管理の使い方を相談したい</option>
+          <option>LINE公式アカウント連携について聞きたい</option>
           <option>その他</option>
         </select>
       </div>
       <div class="form-group">
         <label class="form-label">お問い合わせ内容</label>
-        <textarea class="form-textarea" placeholder="ご質問・ご要望をご記入ください"></textarea>
+        <textarea class="form-textarea" placeholder="現在の営業体制、追客で困っていること、相談したい内容をご記入ください"></textarea>
       </div>
-      <p class="form-note">※ 個人情報の取り扱いについては<a href="#" style="color:var(--primary)">プライバシーポリシー</a>をご確認ください。</p>
+      <p class="form-note">※ 個人情報の取り扱いポリシーは、お打ち合わせ時にご案内します。</p>
       <button class="btn btn--primary form-submit" style="justify-content:center;font-size:15px;padding:16px;">
-        送信する →
+        相談内容を送る →
       </button>
     </div>
   </div>
@@ -2067,17 +2810,17 @@
   <div class="container">
     <div class="text-center fade-in" style="margin-bottom:40px;">
       <div class="label-tag">よくあるご質問</div>
-      <h2 class="section-title">FAQ</h2>
+      <h2 class="section-title">導入前によくあるご質問</h2>
     </div>
     <div class="faq-list fade-in">
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           <span class="faq-q-label">Q</span>
-          無料トライアルはどのように始めればよいですか？
+          住宅会社やリフォーム会社以外でも相談できますか？
           <span class="faq-chevron">▼</span>
         </button>
         <div class="faq-a">
-          <div class="faq-a-inner">お問い合わせフォームよりお申し込みください。審査完了後（通常1営業日以内）、ログイン情報をメールでお送りします。クレジットカード登録は不要で、30日間無料でお試しいただけます。</div>
+          <div class="faq-a-inner">主な想定は住宅会社、工務店、リフォーム会社、外壁塗装会社、屋根工事会社ですが、LINEで反響対応や追客を整えたい業種であればご相談可能です。まずは現在の営業フローを確認し、合うかどうかをお伝えします。</div>
         </div>
       </div>
       <div class="faq-item">
@@ -2087,37 +2830,37 @@
           <span class="faq-chevron">▼</span>
         </button>
         <div class="faq-a">
-          <div class="faq-a-inner">はい、ご利用中のLINE公式アカウントとそのままご連携いただけます。これまでの友だちリストや過去の配信履歴はそのまま引き継いでご利用いただけます。</div>
+          <div class="faq-a-inner">はい、既存のLINE公式アカウント活用を前提にご相談いただけます。現在の運用状況や友だち導線を確認しながら、追客やOB配信に使いやすい形へ整えるイメージです。</div>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           <span class="faq-q-label">Q</span>
-          プランの途中変更は可能ですか？
+          見積提出後の追客をどこまで自動化できますか？
           <span class="faq-chevron">▼</span>
         </button>
         <div class="faq-a">
-          <div class="faq-a-inner">はい、いつでもアップグレード・ダウングレードが可能です。プラン変更は管理画面から即時対応しています。月途中の変更は日割り計算にてご請求します。</div>
+          <div class="faq-a-inner">追客タイミングの設計、テンプレート配信、検討状況ごとのタグ整理などを前提に運用イメージを作れます。どこまで自動化し、どこを営業判断に残すかは業種や営業体制に合わせて設計します。</div>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           <span class="faq-q-label">Q</span>
-          データのセキュリティについて教えてください
+          OB顧客への配信はどんな内容が向いていますか？
           <span class="faq-chevron">▼</span>
         </button>
         <div class="faq-a">
-          <div class="faq-a-inner">国内データセンターにてSSL/TLS暗号化通信・AES-256データ暗号化を採用しています。定期的な外部セキュリティ監査も実施しており、安心してご利用いただけます。</div>
+          <div class="faq-a-inner">定期点検案内、季節ごとのメンテナンス情報、小修繕のご案内、紹介キャンペーン、施工事例の紹介などが相性の良い内容です。売り込み一辺倒ではなく、接点を切らさない設計が重要です。</div>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           <span class="faq-q-label">Q</span>
-          解約はいつでもできますか？
+          まだ写真や事例が少なくても相談できますか？
           <span class="faq-chevron">▼</span>
         </button>
         <div class="faq-a">
-          <div class="faq-a-inner">月額プランは翌月末まで有効で、違約金・手数料なしにいつでも解約可能です。年払いプランは期間中の解約時に月割り精算となります。</div>
+          <div class="faq-a-inner">はい、可能です。まずは営業導線と訴求軸を整え、その後に施工写真やスタッフ写真を追加していく進め方でも十分対応できます。どの写真が必要かも合わせてご案内します。</div>
         </div>
       </div>
     </div>
@@ -2130,42 +2873,42 @@
     <div class="footer__top">
       <div>
         <div class="footer__logo">COMS<span>BI</span></div>
-        <p class="footer__about">LINEビジネス向けクラウドサービス。顧客管理から集客まで、あなたのビジネスを次のステージへ。</p>
+        <p class="footer__about">住宅会社・リフォーム会社・外壁塗装会社・屋根工事会社向け。LINEで見積後追客、OB顧客の再接点、営業管理を整えるためのツールです。</p>
       </div>
       <div>
         <div class="footer__col-title">サービス</div>
         <ul class="footer__links">
-          <li><a href="#about">COMSBIとは？</a></li>
+          <li><a href="#about">サービス概要</a></li>
           <li><a href="#features">活用事例</a></li>
-          <li><a href="#plans">料金プラン</a></li>
-          <li><a href="#">導入事例</a></li>
+          <li><a href="#plans">運用メニュー</a></li>
+          <li><a href="#contact">ご相談</a></li>
         </ul>
       </div>
       <div>
         <div class="footer__col-title">サポート</div>
         <ul class="footer__links">
           <li><a href="#faq">よくある質問</a></li>
-          <li><a href="#">ヘルプセンター</a></li>
           <li><a href="#contact">お問い合わせ</a></li>
-          <li><a href="#">マニュアル</a></li>
+          <li><a href="#features">活用事例</a></li>
+          <li><a href="#reasons">選ばれる理由</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">会社情報</div>
+        <div class="footer__col-title">ご案内</div>
         <ul class="footer__links">
-          <li><a href="#">会社概要</a></li>
-          <li><a href="#">採用情報</a></li>
-          <li><a href="#">プレスリリース</a></li>
-          <li><a href="#">パートナー募集</a></li>
+          <li><a href="#contact">導入相談</a></li>
+          <li><a href="#plans">対応内容</a></li>
+          <li><a href="#faq">導入前の質問</a></li>
+          <li><a href="#about">対象業種</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© 2024 COMSBI Inc. All rights reserved.</span>
+      <span>© 2026 COMSBI</span>
       <div class="footer__bottom-links">
-        <a href="#">プライバシーポリシー</a>
-        <a href="#">利用規約</a>
-        <a href="#">特定商取引法</a>
+        <a href="#about">サービス概要</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#contact">お問い合わせ</a>
       </div>
     </div>
   </div>

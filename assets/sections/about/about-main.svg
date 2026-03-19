@@ -1,0 +1,22 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="128" y1="56" x2="1255" y2="848" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#32424B"/>
+      <stop offset="0.55" stop-color="#4C5E61"/>
+      <stop offset="1" stop-color="#755F4C"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <rect x="92" y="102" width="1216" height="696" rx="36" fill="white" fill-opacity="0.08"/>
+  <path d="M196 606L472 382L781 602V726H196V606Z" fill="#202A34" fill-opacity="0.54"/>
+  <path d="M436 426L501 372L847 615L790 678L436 426Z" fill="#AF7B54" fill-opacity="0.74"/>
+  <rect x="924" y="198" width="278" height="412" rx="28" fill="white" fill-opacity="0.82"/>
+  <rect x="954" y="240" width="218" height="18" rx="9" fill="#2B8C6B" fill-opacity="0.28"/>
+  <rect x="954" y="282" width="218" height="94" rx="18" fill="#EEF5F4"/>
+  <rect x="982" y="312" width="122" height="16" rx="8" fill="#2B8C6B" fill-opacity="0.36"/>
+  <rect x="982" y="342" width="156" height="12" rx="6" fill="#B9CBC6"/>
+  <rect x="130" y="118" width="222" height="48" rx="24" fill="white" fill-opacity="0.12"/>
+  <text x="162" y="150" fill="white" fill-opacity="0.88" font-family="Arial, sans-serif" font-size="26" font-weight="700">ABOUT MAIN IMAGE</text>
+  <text x="134" y="232" fill="white" fill-opacity="0.92" font-family="Arial, sans-serif" font-size="60" font-weight="700">Replace with site or staff photo</text>
+  <text x="134" y="294" fill="#B8F1DE" font-family="Arial, sans-serif" font-size="48" font-weight="700">used in the about section</text>
+</svg>

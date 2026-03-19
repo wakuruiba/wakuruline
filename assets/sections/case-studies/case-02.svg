@@ -1,0 +1,12 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#E7EEF1"/>
+  <rect x="64" y="64" width="1272" height="772" rx="34" fill="white"/>
+  <rect x="120" y="172" width="484" height="348" rx="30" fill="#DBE6EF"/>
+  <rect x="148" y="206" width="152" height="18" rx="9" fill="#2B8C6B" fill-opacity="0.28"/>
+  <rect x="148" y="248" width="288" height="14" rx="7" fill="#9CB2C1"/>
+  <rect x="760" y="140" width="476" height="604" rx="34" fill="#F1F5F8"/>
+  <path d="M842 652L1012 516L1202 648V732H842V652Z" fill="#DCE7EF"/>
+  <path d="M984 540L1026 506L1238 657L1200 698L984 540Z" fill="#B88C69"/>
+  <text x="118" y="598" fill="#23303A" font-family="Arial, sans-serif" font-size="52" font-weight="700">CASE 02</text>
+  <text x="118" y="662" fill="#2B8C6B" font-family="Arial, sans-serif" font-size="44" font-weight="700">Housing lead response scene</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#E5ECEB"/>
+  <rect x="64" y="64" width="1272" height="772" rx="34" fill="white"/>
+  <path d="M146 650L342 492L558 648V742H146V650Z" fill="#D7E2DF"/>
+  <rect x="698" y="148" width="548" height="620" rx="34" fill="#F2F6F5"/>
+  <rect x="742" y="208" width="276" height="18" rx="9" fill="#2B8C6B" fill-opacity="0.3"/>
+  <rect x="742" y="248" width="356" height="16" rx="8" fill="#D0DCDA"/>
+  <rect x="742" y="282" width="294" height="14" rx="7" fill="#DCE5E2"/>
+  <rect x="742" y="332" width="436" height="316" rx="24" fill="#E5EFEC"/>
+  <text x="118" y="164" fill="#22303A" font-family="Arial, sans-serif" font-size="52" font-weight="700">CASE 04</text>
+  <text x="118" y="228" fill="#2B8C6B" font-family="Arial, sans-serif" font-size="44" font-weight="700">Roof emergency intake scene</text>
+</svg>

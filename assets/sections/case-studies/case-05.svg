@@ -1,0 +1,12 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#E8EFE8"/>
+  <rect x="64" y="64" width="1272" height="772" rx="34" fill="white"/>
+  <path d="M158 634L396 446L664 636V748H158V634Z" fill="#DCE8E3"/>
+  <path d="M366 482L426 434L720 644L668 700L366 482Z" fill="#BD9371"/>
+  <rect x="816" y="166" width="432" height="560" rx="32" fill="#F0F5F2"/>
+  <rect x="850" y="214" width="218" height="16" rx="8" fill="#2B8C6B" fill-opacity="0.32"/>
+  <rect x="850" y="248" width="302" height="14" rx="7" fill="#D0DCD8"/>
+  <rect x="850" y="278" width="244" height="14" rx="7" fill="#D8E3DF"/>
+  <text x="118" y="164" fill="#22303A" font-family="Arial, sans-serif" font-size="52" font-weight="700">CASE 05</text>
+  <text x="118" y="228" fill="#2B8C6B" font-family="Arial, sans-serif" font-size="44" font-weight="700">OB customer maintenance scene</text>
+</svg>
